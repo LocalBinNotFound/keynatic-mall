@@ -22,7 +22,6 @@ function hasPermission(menus, route) {
     } else {
       route.sort = 0;
       if (route.hidden !== undefined && route.hidden === true) {
-        route.sort=-1;
         return true;
       } else {
         return false;

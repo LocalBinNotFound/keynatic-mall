@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+// request=axios  asiox({ })   $.ajax    
 export function fetchList(parentId,params) {
   return request({
     url:'/productCategory/list/'+parentId,
@@ -58,3 +59,4 @@ export function fetchListWithChildren() {
     method:'get'
   })
 }
+ 

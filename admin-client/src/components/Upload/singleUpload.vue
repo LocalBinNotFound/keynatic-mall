@@ -1,7 +1,7 @@
 <template> 
   <div>
     <el-upload
-      :action="useOss?ossUploadUrl:minioUploadUrl"
+      :action="useOss?dataObj.host:minioUploadUrl"
       :data="useOss?dataObj:null"
       list-type="picture"
       :multiple="false" :show-file-list="showFileList"
@@ -63,8 +63,7 @@
           // callback:'',
         },
         dialogVisible: false,
-        useOss:false, //使用oss->true;使用MinIO->false
-        ossUploadUrl:'http://macro-oss.oss-cn-shenzhen.aliyuncs.com',
+        useOss:true, //使用oss->true;使用MinIO->false  
         minioUploadUrl:'http://localhost:8080/minio/upload',
       };
     },
