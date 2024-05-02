@@ -1,89 +1,89 @@
 <template>
   <div class="detail-container">
     <el-card shadow="never">
-      <span class="font-title-medium">退货商品</span>
+      <span class="font-title-medium">Returned Products</span>
       <el-table
         border
         class="standard-margin"
         ref="productTable"
         :data="productList">
-        <el-table-column label="商品图片" width="160" align="center">
+        <el-table-column label="Product Image" width="160" align="center">
           <template slot-scope="scope">
             <img style="height:80px" :src="scope.row.productPic">
           </template>
         </el-table-column>
-        <el-table-column label="商品名称" align="center">
+        <el-table-column label="Product Name" align="center">
           <template slot-scope="scope">
             <span class="font-small">{{scope.row.productName}}</span><br>
-            <span class="font-small">品牌：{{scope.row.productBrand}}</span>
+            <span class="font-small">Brand: {{scope.row.productBrand}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="价格/货号" width="180" align="center">
+        <el-table-column label="Price/ID" width="180" align="center">
           <template slot-scope="scope">
-            <span class="font-small">价格：￥{{scope.row.productRealPrice}}</span><br>
-            <span class="font-small">货号：NO.{{scope.row.productId}}</span>
+            <span class="font-small">Price: ¥{{scope.row.productRealPrice}}</span><br>
+            <span class="font-small">ID: NO.{{scope.row.productId}}</span>
           </template>
         </el-table-column>
-        <el-table-column label="属性" width="180" align="center">
+        <el-table-column label="Attributes" width="180" align="center">
           <template slot-scope="scope">{{scope.row.productAttr}}</template>
         </el-table-column>
-        <el-table-column label="数量" width="100" align="center">
+        <el-table-column label="Quantity" width="100" align="center">
           <template slot-scope="scope">{{scope.row.productCount}}</template>
         </el-table-column>
-        <el-table-column label="小计" width="100" align="center">
-          <template slot-scope="scope">￥{{totalAmount}}</template>
+        <el-table-column label="Subtotal" width="100" align="center">
+          <template slot-scope="scope">¥{{totalAmount}}</template>
         </el-table-column>
       </el-table>
       <div style="float:right;margin-top:15px;margin-bottom:15px">
-        <span class="font-title-medium">合计：</span>
-        <span class="font-title-medium color-danger">￥{{totalAmount}}</span>
+        <span class="font-title-medium">Total:</span>
+        <span class="font-title-medium color-danger">¥{{totalAmount}}</span>
       </div>
     </el-card>
     <el-card shadow="never" class="standard-margin">
-      <span class="font-title-medium">服务单信息</span>
+      <span class="font-title-medium">Service Order Information</span>
       <div class="form-container-border">
         <el-row>
-          <el-col :span="6" class="form-border form-left-bg font-small">服务单号</el-col>
+          <el-col :span="6" class="form-border form-left-bg font-small">Service Order Number</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.id}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">申请状态</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Application Status</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.status | formatStatus}}</el-col>
         </el-row>
         <el-row>
-          <el-col :span="6" class="form-border form-left-bg font-small" style="height:50px;line-height:30px">订单编号
+          <el-col :span="6" class="form-border form-left-bg font-small" style="height:50px;line-height:30px">Order Number
           </el-col>
           <el-col class="form-border font-small" :span="18" style="height:50px">
             {{orderReturnApply.orderSn}}
-            <el-button type="text" size="small" @click="handleViewOrder">查看</el-button>
+            <el-button type="text" size="small" @click="handleViewOrder">View</el-button>
           </el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">申请时间</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Application Time</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.createTime | formatTime}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">用户账号</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">User Account</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.memberUsername}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">联系人</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Contact Person</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.returnName}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">联系电话</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Contact Phone</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.returnPhone}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">退货原因</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Reason for Return</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.reason}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">问题描述</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Problem Description</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.description}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" style="height:100px;line-height:80px">凭证图片
+          <el-col class="form-border form-left-bg font-small" :span="6" style="height:100px;line-height:80px">Proof Images
           </el-col>
           <el-col class="form-border font-small" :span="18" style="height:100px">
             <img v-for="item in proofPics" style="width:80px;height:80px" :src="item">
@@ -92,85 +92,85 @@
       </div>
       <div class="form-container-border">
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">订单金额</el-col>
-          <el-col class="form-border font-small" :span="18">￥{{totalAmount}}</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Order Amount</el-col>
+          <el-col class="form-border font-small" :span="18">¥{{totalAmount}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">确认退款金额
+          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">Confirm Refund Amount
           </el-col>
           <el-col class="form-border font-small" style="height:52px" :span="18">
-            ￥
+            ¥
             <el-input size="small" v-model="updateStatusParam.returnAmount"
                       :disabled="orderReturnApply.status!==0"
                       style="width:200px;margin-left: 10px"></el-input>
           </el-col>
         </el-row>
         <div v-show="orderReturnApply.status!==3">
-        <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">选择收货点
-          </el-col>
-          <el-col class="form-border font-small" style="height:52px" :span="18">
-            <el-select size="small"
-                       style="width:200px"
-                       :disabled="orderReturnApply.status!==0"
-                       v-model="updateStatusParam.companyAddressId">
-              <el-option v-for="address in companyAddressList"
-                         :key="address.id"
-                         :value="address.id"
-                         :label="address.addressName">
-              </el-option>
-            </el-select>
-          </el-col>
-        </el-row>
-        <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">收货人姓名</el-col>
-          <el-col class="form-border font-small" :span="18">{{currentAddress.name}}</el-col>
-        </el-row>
-        <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">所在区域</el-col>
-          <el-col class="form-border font-small" :span="18">{{currentAddress | formatRegion}}</el-col>
-        </el-row>
-        <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">详细地址</el-col>
-          <el-col class="form-border font-small" :span="18">{{currentAddress.detailAddress}}</el-col>
-        </el-row>
-        <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">联系电话</el-col>
-          <el-col class="form-border font-small" :span="18">{{currentAddress.phone}}</el-col>
-        </el-row>
+          <el-row>
+            <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">Choose Collection Point
+            </el-col>
+            <el-col class="form-border font-small" style="height:52px" :span="18">
+              <el-select size="small"
+                         style="width:200px"
+                         :disabled="orderReturnApply.status!==0"
+                         v-model="updateStatusParam.companyAddressId">
+                <el-option v-for="address in companyAddressList"
+                           :key="address.id"
+                           :value="address.id"
+                           :label="address.addressName">
+                </el-option>
+              </el-select>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col class="form-border form-left-bg font-small" :span="6">Recipient's Name</el-col>
+            <el-col class="form-border font-small" :span="18">{{currentAddress.name}}</el-col>
+          </el-row>
+          <el-row>
+            <el-col class="form-border form-left-bg font-small" :span="6">Region</el-col>
+            <el-col class="form-border font-small" :span="18">{{currentAddress | formatRegion}}</el-col>
+          </el-row>
+          <el-row>
+            <el-col class="form-border form-left-bg font-small" :span="6">Detailed Address</el-col>
+            <el-col class="form-border font-small" :span="18">{{currentAddress.detailAddress}}</el-col>
+          </el-row>
+          <el-row>
+            <el-col class="form-border form-left-bg font-small" :span="6">Contact Phone</el-col>
+            <el-col class="form-border font-small" :span="18">{{currentAddress.phone}}</el-col>
+          </el-row>
         </div>
       </div>
       <div class="form-container-border" v-show="orderReturnApply.status!==0">
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">处理人员</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Processing Personnel</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.handleMan}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">处理时间</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Processing Time</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.handleTime | formatTime}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">处理备注</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Processing Note</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.handleNote}}</el-col>
         </el-row>
       </div>
       <div class="form-container-border" v-show="orderReturnApply.status===2">
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">收货人员</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Recipient Personnel</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.receiveMan}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" >收货时间</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6" >Receipt Time</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.receiveTime | formatTime}}</el-col>
         </el-row>
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6">收货备注</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6">Receipt Note</el-col>
           <el-col class="form-border font-small" :span="18">{{orderReturnApply.receiveNote}}</el-col>
         </el-row>
       </div>
       <div class="form-container-border" v-show="orderReturnApply.status===0">
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">处理备注</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">Processing Note</el-col>
           <el-col class="form-border font-small" :span="18">
             <el-input  size="small" v-model="updateStatusParam.handleNote" style="width:200px;margin-left: 10px"></el-input>
           </el-col>
@@ -178,18 +178,18 @@
       </div>
       <div class="form-container-border" v-show="orderReturnApply.status===1">
         <el-row>
-          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">收货备注</el-col>
+          <el-col class="form-border form-left-bg font-small" :span="6" style="height:52px;line-height:32px">Receipt Note</el-col>
           <el-col class="form-border font-small" :span="18">
             <el-input  size="small" v-model="updateStatusParam.receiveNote" style="width:200px;margin-left: 10px"></el-input>
           </el-col>
         </el-row>
       </div>
       <div style="margin-top:15px;text-align: center" v-show="orderReturnApply.status===0">
-        <el-button type="primary" size="small" @click="handleUpdateStatus(1)">确认退货</el-button>
-        <el-button type="danger" size="small" @click="handleUpdateStatus(3)">拒绝退货</el-button>
+        <el-button type="primary" size="small" @click="handleUpdateStatus(1)">Confirm Return</el-button>
+        <el-button type="danger" size="small" @click="handleUpdateStatus(3)">Reject Return</el-button>
       </div>
       <div style="margin-top:15px;text-align: center" v-show="orderReturnApply.status===1">
-        <el-button type="primary" size="small" @click="handleUpdateStatus(2)">确认收货</el-button>
+        <el-button type="primary" size="small" @click="handleUpdateStatus(2)">Confirm Delivery</el-button>
       </div>
     </el-card>
   </div>
@@ -336,15 +336,15 @@
       },
       handleUpdateStatus(status){
         this.updateStatusParam.status=status;
-        this.$confirm('是否要进行此操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Are you sure?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateApplyStatus(this.id,this.updateStatusParam).then(response=>{
             this.$message({
               type: 'success',
-              message: '操作成功!',
+              message: 'Success!',
               duration:1000
             });
             this.$router.back();

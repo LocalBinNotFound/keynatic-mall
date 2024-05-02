@@ -25,9 +25,7 @@
   export default {
     name: 'multiUpload',
     props: {
-      //图片属性数组
       value: Array,
-      //最大上传图片数量
       maxCount:{
         type:Number,
         default:5
@@ -45,7 +43,7 @@
         },
         dialogVisible: false,
         dialogImageUrl:null,
-        useOss:true, //使用oss->true;使用MinIO->false 
+        useOss:true, //oss->true;MinIO->false
         minioUploadUrl:'http://localhost:8080/minio/upload',
       };
     },
@@ -76,7 +74,6 @@
       beforeUpload(file) {
         let _self = this;
         if(!this.useOss){
-          //不使用oss不需要获取策略
           return true;
         }
         return new Promise((resolve, reject) => {
@@ -97,7 +94,6 @@
       handleUploadSuccess(res, file) {
         let url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name;
         if(!this.useOss){
-          //不使用oss直接获取图片路径
           url = res.data.url;
         }
         this.fileList.push({name: file.name,url:url});
@@ -105,7 +101,7 @@
       },
       handleExceed(files, fileList) {
         this.$message({
-          message: '最多只能上传'+this.maxCount+'张图片',
+          message: 'You can only upload '+this.maxCount+' images',
           type: 'warning',
           duration:1000
         });
