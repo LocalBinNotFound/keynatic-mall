@@ -41,7 +41,7 @@
             登录
           </el-button>
           <el-button style="width: 45%" type="primary" @click.native.prevent="handleTry">
-            获取体验账号
+            注册
           </el-button>
         </el-form-item>
       </el-form>
