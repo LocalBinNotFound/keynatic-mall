@@ -1,5 +1,6 @@
 HELP.md
-/target/
+/server/mall-admin/target
+/server/mall-mbpg/target
 !.mvn/wrapper/maven-wrapper.jar
 .DS_Store
 
