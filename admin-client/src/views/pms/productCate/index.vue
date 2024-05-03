@@ -58,7 +58,7 @@
             <el-button
               size="mini"
               :disabled="scope.row.level | disableNextLevel"
-              @click="handleShowNextLevel(scope.$index, scope.row)">查看下级
+              @click="handleShowNextLevel(scope.$index, scope.row)">View Children
             </el-button>
             <!-- <el-button
               size="mini"

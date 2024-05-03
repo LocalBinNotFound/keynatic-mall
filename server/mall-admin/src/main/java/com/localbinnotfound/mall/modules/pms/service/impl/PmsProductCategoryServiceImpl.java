@@ -1,5 +1,7 @@
 package com.localbinnotfound.mall.modules.pms.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductCategoryMapper;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
@@ -17,4 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategoryMapper, PmsProductCategory> implements PmsProductCategoryService {
 
+    @Override
+    public Page list(Long parentId, Integer pageNum, Integer pageSize) {
+        Page page = new Page(pageNum, pageSize);
+
+        QueryWrapper<PmsProductCategory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(PmsProductCategory::getParentId, parentId);
+        return this.page(page, queryWrapper);
+    }
 }
