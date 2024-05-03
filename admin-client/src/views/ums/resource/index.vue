@@ -20,14 +20,14 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="Resource Name:">
+          <el-form-item label="Resource Name">
             <el-input v-model="listQuery.nameKeyword" class="input-width" placeholder="resource name" clearable></el-input>
           </el-form-item>
-          <el-form-item label="Resource Path:">
+          <el-form-item label="Resource Path">
             <el-input v-model="listQuery.urlKeyword" class="input-width" placeholder="resource path" clearable></el-input>
           </el-form-item>
-          <el-form-item label="Resource Category:">
-            <el-select v-model="listQuery.categoryId" placeholder="all" clearable class="input-width">
+          <el-form-item label="Resource Category">
+            <el-select v-model="listQuery.categoryId" placeholder="please select" clearable class="input-width">
               <el-option v-for="item in categoryOptions"
                          :key="item.value"
                          :label="item.label"
@@ -40,7 +40,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>Resource List</span>
+      <span>Data List</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">Add</el-button>
       <el-button size="mini" class="btn-add" @click="handleShowCategory()">Resource Category</el-button>
     </el-card>
@@ -97,14 +97,14 @@
       <el-form :model="resource"
                ref="resourceForm"
                label-width="150px" size="small">
-        <el-form-item label="Resource Name:">
+        <el-form-item label="Resource Name">
           <el-input v-model="resource.name" style="width: 250px"></el-input>
         </el-form-item>
-        <el-form-item label="Resource Path:">
+        <el-form-item label="Resource Path">
           <el-input v-model="resource.url" style="width: 250px"></el-input>
         </el-form-item>
-        <el-form-item label="Resource Category:">
-          <el-select v-model="resource.categoryId" placeholder="all" clearable style="width: 250px">
+        <el-form-item label="Resource Category">
+          <el-select v-model="resource.categoryId" placeholder="please select" clearable style="width: 250px">
             <el-option v-for="item in categoryOptions"
                        :key="item.value"
                        :label="item.label"
@@ -205,7 +205,7 @@
           deleteResource(row.id).then(response => {
             this.$message({
               type: 'success',
-              message: 'Success!'
+              message: 'Delete success!'
             });
             this.getList();
           });

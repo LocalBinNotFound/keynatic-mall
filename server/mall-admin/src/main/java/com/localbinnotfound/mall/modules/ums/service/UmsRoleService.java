@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface UmsRoleService extends IService<UmsRole> {
     /**
-     * 添加角色
+     * Add角色
      */
     boolean create(UmsRole role);
 

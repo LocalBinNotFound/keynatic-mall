@@ -28,7 +28,7 @@ public class UmsMenuController {
     @Autowired
     private UmsMenuService menuService;
 
-    @ApiOperation("添加后台菜单")
+    @ApiOperation("Add后台菜单")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody UmsMenu umsMenu) {

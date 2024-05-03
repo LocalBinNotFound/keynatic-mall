@@ -20,7 +20,7 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="Type to Search:">
+          <el-form-item label="Search">
             <el-input v-model="listQuery.keyword" class="input-width" placeholder="username or name" clearable></el-input>
           </el-form-item>
         </el-form>
@@ -28,7 +28,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>Account List</span>
+      <span>Data List</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">Add</el-button>
     </el-card>
     <div class="table-container">

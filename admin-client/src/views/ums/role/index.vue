@@ -20,7 +20,7 @@
       </div>
       <div style="margin-top: 15px">
         <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
-          <el-form-item label="Search:">
+          <el-form-item label="Search">
             <el-input v-model="listQuery.keyword" class="input-width" placeholder="role name" clearable></el-input>
           </el-form-item>
         </el-form>
@@ -28,7 +28,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>Role List</span>
+      <span>Data List</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">Add</el-button>
     </el-card>
     <div class="table-container">
@@ -66,11 +66,11 @@
             <el-row>
               <el-button size="mini"
                          type="text"
-                         @click="handleSelectMenu(scope.$index, scope.row)">Allocate Menu
+                         @click="handleSelectMenu(scope.$index, scope.row)">Menu
               </el-button>
               <el-button size="mini"
                          type="text"
-                         @click="handleSelectResource(scope.$index, scope.row)">Allocate Resource
+                         @click="handleSelectResource(scope.$index, scope.row)">Resource
               </el-button>
             </el-row>
             <el-row>

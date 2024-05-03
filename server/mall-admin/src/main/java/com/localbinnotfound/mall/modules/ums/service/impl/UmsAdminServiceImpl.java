@@ -119,7 +119,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper,UmsAdmin> im
     }
 
     /**
-     * 添加登录记录
+     * Add登录记录
      * @param username 用户名
      */
     private void insertLoginLog(String username) {

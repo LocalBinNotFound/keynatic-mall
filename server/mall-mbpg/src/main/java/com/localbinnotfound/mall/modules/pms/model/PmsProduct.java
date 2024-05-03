@@ -127,7 +127,7 @@ public class PmsProduct implements Serializable {
     @ApiModelProperty("促销开始时间")
     private Date promotionStartTime;
 
-    @ApiModelProperty("促销结束时间")
+    @ApiModelProperty("促销End Time:")
     private Date promotionEndTime;
 
     @ApiModelProperty("活动限购数量")

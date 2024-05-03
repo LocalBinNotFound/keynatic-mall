@@ -100,13 +100,13 @@ LOCK TABLES `cms_member_report` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cms_prefrence_area`
+-- Table structure for table `cms_preference_area`
 --
 
-DROP TABLE IF EXISTS `cms_prefrence_area`;
+DROP TABLE IF EXISTS `cms_preference_area`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cms_prefrence_area` (
+CREATE TABLE `cms_preference_area` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `sub_title` varchar(255) DEFAULT NULL,
@@ -118,38 +118,38 @@ CREATE TABLE `cms_prefrence_area` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cms_prefrence_area`
+-- Dumping data for table `cms_preference_area`
 --
 
-LOCK TABLES `cms_prefrence_area` WRITE;
-/*!40000 ALTER TABLE `cms_prefrence_area` DISABLE KEYS */;
-INSERT INTO `cms_prefrence_area` VALUES (1,'让音质更出众','音质不打折 完美现场感',NULL,NULL,1),(2,'让音质更出众22','让音质更出众22',NULL,NULL,NULL),(3,'让音质更出众33',NULL,NULL,NULL,NULL),(4,'让音质更出众44',NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `cms_prefrence_area` ENABLE KEYS */;
+LOCK TABLES `cms_preference_area` WRITE;
+/*!40000 ALTER TABLE `cms_preference_area` DISABLE KEYS */;
+INSERT INTO `cms_preference_area` VALUES (1,'让音质更出众','音质不打折 完美现场感',NULL,NULL,1),(2,'让音质更出众22','让音质更出众22',NULL,NULL,NULL),(3,'让音质更出众33',NULL,NULL,NULL,NULL),(4,'让音质更出众44',NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `cms_preference_area` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cms_prefrence_area_product_relation`
+-- Table structure for table `cms_preference_area_product_relation`
 --
 
-DROP TABLE IF EXISTS `cms_prefrence_area_product_relation`;
+DROP TABLE IF EXISTS `cms_preference_area_product_relation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cms_prefrence_area_product_relation` (
+CREATE TABLE `cms_preference_area_product_relation` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `prefrence_area_id` bigint DEFAULT NULL,
+  `preference_area_id` bigint DEFAULT NULL,
   `product_id` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COMMENT='优选专区和产品关系表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cms_prefrence_area_product_relation`
+-- Dumping data for table `cms_preference_area_product_relation`
 --
 
-LOCK TABLES `cms_prefrence_area_product_relation` WRITE;
-/*!40000 ALTER TABLE `cms_prefrence_area_product_relation` DISABLE KEYS */;
-INSERT INTO `cms_prefrence_area_product_relation` VALUES (1,1,12),(2,1,13),(3,1,14),(4,1,18),(5,1,7),(6,2,7),(7,1,22),(24,1,23);
-/*!40000 ALTER TABLE `cms_prefrence_area_product_relation` ENABLE KEYS */;
+LOCK TABLES `cms_preference_area_product_relation` WRITE;
+/*!40000 ALTER TABLE `cms_preference_area_product_relation` DISABLE KEYS */;
+INSERT INTO `cms_preference_area_product_relation` VALUES (1,1,12),(2,1,13),(3,1,14),(4,1,18),(5,1,7),(6,2,7),(7,1,22),(24,1,23);
+/*!40000 ALTER TABLE `cms_preference_area_product_relation` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -372,12 +372,12 @@ CREATE TABLE `oms_cart_item` (
   `product_sku_id` bigint DEFAULT NULL,
   `member_id` bigint DEFAULT NULL,
   `quantity` int DEFAULT NULL COMMENT '购买数量',
-  `price` decimal(10,2) DEFAULT NULL COMMENT '添加到购物车的价格',
+  `price` decimal(10,2) DEFAULT NULL COMMENT 'Add到购物车的价格',
   `sp1` varchar(200) DEFAULT NULL COMMENT '销售属性1',
   `sp2` varchar(200) DEFAULT NULL COMMENT '销售属性2',
   `sp3` varchar(200) DEFAULT NULL COMMENT '销售属性3',
   `product_pic` varchar(1000) DEFAULT NULL COMMENT '商品主图',
-  `product_name` varchar(500) DEFAULT NULL COMMENT '商品名称',
+  `product_name` varchar(500) DEFAULT NULL COMMENT 'Product Name',
   `product_sub_title` varchar(500) DEFAULT NULL COMMENT '商品副标题（卖点）',
   `product_sku_code` varchar(200) DEFAULT NULL COMMENT '商品sku条码',
   `member_nickname` varchar(500) DEFAULT NULL COMMENT '会员昵称',
@@ -415,7 +415,7 @@ CREATE TABLE `oms_company_address` (
   `send_status` int DEFAULT NULL COMMENT '默认发货地址：0->否；1->是',
   `receive_status` int DEFAULT NULL COMMENT '是否默认收货地址：0->否；1->是',
   `name` varchar(64) DEFAULT NULL COMMENT '收发货人姓名',
-  `phone` varchar(64) DEFAULT NULL COMMENT '收货人电话',
+  `phone` varchar(64) DEFAULT NULL COMMENT 'Recipient电话',
   `province` varchar(64) DEFAULT NULL COMMENT '省/直辖市',
   `city` varchar(64) DEFAULT NULL COMMENT '市',
   `region` varchar(64) DEFAULT NULL COMMENT '区',
@@ -445,8 +445,8 @@ CREATE TABLE `oms_order` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `member_id` bigint NOT NULL,
   `coupon_id` bigint DEFAULT NULL,
-  `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
-  `create_time` datetime DEFAULT NULL COMMENT '提交时间',
+  `order_sn` varchar(64) DEFAULT NULL COMMENT 'Order Number',
+  `create_time` datetime DEFAULT NULL COMMENT 'Request Date',
   `member_username` varchar(64) DEFAULT NULL COMMENT '用户帐号',
   `total_amount` decimal(10,2) DEFAULT NULL COMMENT '订单总金额',
   `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '应付金额（实际支付金额）',
@@ -456,8 +456,8 @@ CREATE TABLE `oms_order` (
   `coupon_amount` decimal(10,2) DEFAULT NULL COMMENT '优惠券抵扣金额',
   `discount_amount` decimal(10,2) DEFAULT NULL COMMENT '管理员后台调整订单使用的折扣金额',
   `pay_type` int DEFAULT NULL COMMENT '支付方式：0->未支付；1->支付宝；2->微信',
-  `source_type` int DEFAULT NULL COMMENT '订单来源：0->PC订单；1->app订单',
-  `status` int DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
+  `source_type` int DEFAULT NULL COMMENT 'Order 0->PC订单；1->app订单',
+  `status` int DEFAULT NULL COMMENT 'Order Status：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `order_type` int DEFAULT NULL COMMENT '订单类型：0->正常订单；1->秒杀订单',
   `delivery_company` varchar(64) DEFAULT NULL COMMENT '物流公司(配送方式)',
   `delivery_sn` varchar(64) DEFAULT NULL COMMENT '物流单号',
@@ -470,9 +470,9 @@ CREATE TABLE `oms_order` (
   `bill_content` varchar(200) DEFAULT NULL COMMENT '发票内容',
   `bill_receiver_phone` varchar(32) DEFAULT NULL COMMENT '收票人电话',
   `bill_receiver_email` varchar(64) DEFAULT NULL COMMENT '收票人邮箱',
-  `receiver_name` varchar(100) NOT NULL COMMENT '收货人姓名',
-  `receiver_phone` varchar(32) NOT NULL COMMENT '收货人电话',
-  `receiver_post_code` varchar(32) DEFAULT NULL COMMENT '收货人邮编',
+  `receiver_name` varchar(100) NOT NULL COMMENT 'Recipient姓名',
+  `receiver_phone` varchar(32) NOT NULL COMMENT 'Recipient电话',
+  `receiver_post_code` varchar(32) DEFAULT NULL COMMENT 'Recipient邮编',
   `receiver_province` varchar(32) DEFAULT NULL COMMENT '省份/直辖市',
   `receiver_city` varchar(32) DEFAULT NULL COMMENT '城市',
   `receiver_region` varchar(32) DEFAULT NULL COMMENT '区',
@@ -510,7 +510,7 @@ DROP TABLE IF EXISTS `oms_order_item`;
 CREATE TABLE `oms_order_item` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `order_id` bigint DEFAULT NULL COMMENT '订单id',
-  `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
+  `order_sn` varchar(64) DEFAULT NULL COMMENT 'Order Number',
   `product_id` bigint DEFAULT NULL,
   `product_pic` varchar(500) DEFAULT NULL,
   `product_name` varchar(200) DEFAULT NULL,
@@ -558,7 +558,7 @@ CREATE TABLE `oms_order_operate_history` (
   `order_id` bigint DEFAULT NULL COMMENT '订单id',
   `operate_man` varchar(100) DEFAULT NULL COMMENT '操作人：用户；系统；后台管理员',
   `create_time` datetime DEFAULT NULL COMMENT '操作时间',
-  `order_status` int DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
+  `order_status` int DEFAULT NULL COMMENT 'Order Status：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `note` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COMMENT='订单操作历史记录';
@@ -570,7 +570,7 @@ CREATE TABLE `oms_order_operate_history` (
 
 LOCK TABLES `oms_order_operate_history` WRITE;
 /*!40000 ALTER TABLE `oms_order_operate_history` DISABLE KEYS */;
-INSERT INTO `oms_order_operate_history` VALUES (5,12,'后台管理员','2018-10-12 14:01:29',2,'完成发货'),(6,13,'后台管理员','2018-10-12 14:01:29',2,'完成发货'),(7,12,'后台管理员','2018-10-12 14:13:10',4,'订单关闭:买家退货'),(8,13,'后台管理员','2018-10-12 14:13:10',4,'订单关闭:买家退货'),(9,22,'后台管理员','2018-10-15 16:31:48',4,'订单关闭:xxx'),(10,22,'后台管理员','2018-10-15 16:35:08',4,'订单关闭:xxx'),(11,22,'后台管理员','2018-10-15 16:35:59',4,'订单关闭:xxx'),(12,17,'后台管理员','2018-10-15 16:43:40',4,'订单关闭:xxx'),(13,25,'后台管理员','2018-10-15 16:52:14',4,'订单关闭:xxx'),(14,26,'后台管理员','2018-10-15 16:52:14',4,'订单关闭:xxx'),(15,23,'后台管理员','2018-10-16 14:41:28',2,'完成发货'),(16,13,'后台管理员','2018-10-16 14:42:17',2,'完成发货'),(17,18,'后台管理员','2018-10-16 14:42:17',2,'完成发货'),(18,26,'后台管理员','2018-10-30 14:37:44',4,'订单关闭:关闭订单'),(19,25,'后台管理员','2018-10-30 15:07:01',0,'修改收货人信息'),(20,25,'后台管理员','2018-10-30 15:08:13',0,'修改费用信息'),(21,25,'后台管理员','2018-10-30 15:08:31',0,'修改备注信息：xxx'),(22,25,'后台管理员','2018-10-30 15:08:39',4,'订单关闭:2222');
+INSERT INTO `oms_order_operate_history` VALUES (5,12,'后台管理员','2018-10-12 14:01:29',2,'完成发货'),(6,13,'后台管理员','2018-10-12 14:01:29',2,'完成发货'),(7,12,'后台管理员','2018-10-12 14:13:10',4,'订单关闭:买家退货'),(8,13,'后台管理员','2018-10-12 14:13:10',4,'订单关闭:买家退货'),(9,22,'后台管理员','2018-10-15 16:31:48',4,'订单关闭:xxx'),(10,22,'后台管理员','2018-10-15 16:35:08',4,'订单关闭:xxx'),(11,22,'后台管理员','2018-10-15 16:35:59',4,'订单关闭:xxx'),(12,17,'后台管理员','2018-10-15 16:43:40',4,'订单关闭:xxx'),(13,25,'后台管理员','2018-10-15 16:52:14',4,'订单关闭:xxx'),(14,26,'后台管理员','2018-10-15 16:52:14',4,'订单关闭:xxx'),(15,23,'后台管理员','2018-10-16 14:41:28',2,'完成发货'),(16,13,'后台管理员','2018-10-16 14:42:17',2,'完成发货'),(17,18,'后台管理员','2018-10-16 14:42:17',2,'完成发货'),(18,26,'后台管理员','2018-10-30 14:37:44',4,'订单关闭:关闭订单'),(19,25,'后台管理员','2018-10-30 15:07:01',0,'修改Recipient信息'),(20,25,'后台管理员','2018-10-30 15:08:13',0,'修改费用信息'),(21,25,'后台管理员','2018-10-30 15:08:31',0,'修改备注信息：xxx'),(22,25,'后台管理员','2018-10-30 15:08:39',4,'订单关闭:2222');
 /*!40000 ALTER TABLE `oms_order_operate_history` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -586,16 +586,16 @@ CREATE TABLE `oms_order_return_apply` (
   `order_id` bigint DEFAULT NULL COMMENT '订单id',
   `company_address_id` bigint DEFAULT NULL COMMENT '收货地址表id',
   `product_id` bigint DEFAULT NULL COMMENT '退货商品id',
-  `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
-  `create_time` datetime DEFAULT NULL COMMENT '申请时间',
+  `order_sn` varchar(64) DEFAULT NULL COMMENT 'Order Number',
+  `create_time` datetime DEFAULT NULL COMMENT 'Request Date',
   `member_username` varchar(64) DEFAULT NULL COMMENT '会员用户名',
   `return_amount` decimal(10,2) DEFAULT NULL COMMENT '退款金额',
   `return_name` varchar(100) DEFAULT NULL COMMENT '退货人姓名',
   `return_phone` varchar(100) DEFAULT NULL COMMENT '退货人电话',
   `status` int DEFAULT NULL COMMENT '申请状态：0->待处理；1->退货中；2->已完成；3->已拒绝',
-  `handle_time` datetime DEFAULT NULL COMMENT '处理时间',
+  `handle_time` datetime DEFAULT NULL COMMENT 'Processed Date',
   `product_pic` varchar(500) DEFAULT NULL COMMENT '商品图片',
-  `product_name` varchar(200) DEFAULT NULL COMMENT '商品名称',
+  `product_name` varchar(200) DEFAULT NULL COMMENT 'Product Name',
   `product_brand` varchar(200) DEFAULT NULL COMMENT '商品品牌',
   `product_attr` varchar(500) DEFAULT NULL COMMENT '商品销售属性：颜色：红色；尺码：xl;',
   `product_count` int DEFAULT NULL COMMENT '退货数量',
@@ -606,7 +606,7 @@ CREATE TABLE `oms_order_return_apply` (
   `proof_pics` varchar(1000) DEFAULT NULL COMMENT '凭证图片，以逗号隔开',
   `handle_note` varchar(500) DEFAULT NULL COMMENT '处理备注',
   `handle_man` varchar(100) DEFAULT NULL COMMENT '处理人员',
-  `receive_man` varchar(100) DEFAULT NULL COMMENT '收货人',
+  `receive_man` varchar(100) DEFAULT NULL COMMENT 'Recipient',
   `receive_time` datetime DEFAULT NULL COMMENT '收货时间',
   `receive_note` varchar(500) DEFAULT NULL COMMENT '收货备注',
   PRIMARY KEY (`id`)
@@ -635,7 +635,7 @@ CREATE TABLE `oms_order_return_reason` (
   `name` varchar(100) DEFAULT NULL COMMENT '退货类型',
   `sort` int DEFAULT NULL,
   `status` int DEFAULT NULL COMMENT '状态：0->不启用；1->启用',
-  `create_time` datetime DEFAULT NULL COMMENT '添加时间',
+  `create_time` datetime DEFAULT NULL COMMENT 'Add时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COMMENT='退货原因表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -927,7 +927,7 @@ CREATE TABLE `pms_product` (
   `detail_html` text COMMENT '产品详情网页内容',
   `detail_mobile_html` text COMMENT '移动端网页详情',
   `promotion_start_time` datetime DEFAULT NULL COMMENT '促销开始时间',
-  `promotion_end_time` datetime DEFAULT NULL COMMENT '促销结束时间',
+  `promotion_end_time` datetime DEFAULT NULL COMMENT '促销End Time:',
   `promotion_per_limit` int DEFAULT NULL COMMENT '活动限购数量',
   `promotion_type` int DEFAULT NULL COMMENT '促销类型：0->没有促销使用原价;1->使用促销价；2->使用会员价；3->使用阶梯价格；4->使用满减价格；5->限时购',
   `brand_name` varchar(255) DEFAULT NULL COMMENT '品牌名称',
@@ -1017,7 +1017,7 @@ CREATE TABLE `pms_product_attribute_value` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `product_id` bigint DEFAULT NULL,
   `product_attribute_id` bigint DEFAULT NULL,
-  `value` varchar(64) DEFAULT NULL COMMENT '手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开',
+  `value` varchar(64) DEFAULT NULL COMMENT '手动Add规格或参数的值，参数单值，规格有多个时以逗号隔开',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8mb3 COMMENT='存储产品参数信息的表';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1297,7 +1297,7 @@ CREATE TABLE `sms_coupon_history` (
   `create_time` datetime DEFAULT NULL,
   `use_status` int DEFAULT NULL COMMENT '使用状态：0->未使用；1->已使用；2->已过期',
   `use_time` datetime DEFAULT NULL COMMENT '使用时间',
-  `order_id` bigint DEFAULT NULL COMMENT '订单编号',
+  `order_id` bigint DEFAULT NULL COMMENT 'Order Number',
   `order_sn` varchar(100) DEFAULT NULL COMMENT '订单号码',
   PRIMARY KEY (`id`),
   KEY `idx_member_id` (`member_id`) USING BTREE,
@@ -1353,7 +1353,7 @@ CREATE TABLE `sms_coupon_product_relation` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `coupon_id` bigint DEFAULT NULL,
   `product_id` bigint DEFAULT NULL,
-  `product_name` varchar(500) DEFAULT NULL COMMENT '商品名称',
+  `product_name` varchar(500) DEFAULT NULL COMMENT 'Product Name',
   `product_sn` varchar(200) DEFAULT NULL COMMENT '商品编码',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COMMENT='优惠券和产品的关系表';
@@ -1466,7 +1466,7 @@ CREATE TABLE `sms_flash_promotion_session` (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '编号',
   `name` varchar(200) DEFAULT NULL COMMENT '场次名称',
   `start_time` time DEFAULT NULL COMMENT '每日开始时间',
-  `end_time` time DEFAULT NULL COMMENT '每日结束时间',
+  `end_time` time DEFAULT NULL COMMENT '每日End Time:',
   `status` int DEFAULT NULL COMMENT '启用状态：0->不启用；1->启用',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
@@ -1748,7 +1748,7 @@ CREATE TABLE `ums_growth_change_history` (
   `create_time` datetime DEFAULT NULL,
   `change_type` int DEFAULT NULL COMMENT '改变类型：0->增加；1->减少',
   `change_count` int DEFAULT NULL COMMENT '积分改变数量',
-  `operate_man` varchar(100) DEFAULT NULL COMMENT '操作人员',
+  `operate_man` varchar(100) DEFAULT NULL COMMENT 'Operator',
   `operate_note` varchar(200) DEFAULT NULL COMMENT '操作备注',
   `source_type` int DEFAULT NULL COMMENT '积分来源：0->购物；1->管理员修改',
   PRIMARY KEY (`id`)
@@ -1778,7 +1778,7 @@ CREATE TABLE `ums_integration_change_history` (
   `create_time` datetime DEFAULT NULL,
   `change_type` int DEFAULT NULL COMMENT '改变类型：0->增加；1->减少',
   `change_count` int DEFAULT NULL COMMENT '积分改变数量',
-  `operate_man` varchar(100) DEFAULT NULL COMMENT '操作人员',
+  `operate_man` varchar(100) DEFAULT NULL COMMENT 'Operator',
   `operate_note` varchar(200) DEFAULT NULL COMMENT '操作备注',
   `source_type` int DEFAULT NULL COMMENT '积分来源：0->购物；1->管理员修改',
   PRIMARY KEY (`id`)
@@ -1985,7 +1985,7 @@ DROP TABLE IF EXISTS `ums_member_receive_address`;
 CREATE TABLE `ums_member_receive_address` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `member_id` bigint DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL COMMENT '收货人名称',
+  `name` varchar(100) DEFAULT NULL COMMENT 'Recipient名称',
   `phone_number` varchar(64) DEFAULT NULL,
   `default_status` int DEFAULT NULL COMMENT '是否为默认',
   `post_code` varchar(100) DEFAULT NULL COMMENT '邮政编码',
@@ -2210,7 +2210,7 @@ CREATE TABLE `ums_resource` (
 
 LOCK TABLES `ums_resource` WRITE;
 /*!40000 ALTER TABLE `ums_resource` DISABLE KEYS */;
-INSERT INTO `ums_resource` VALUES (1,'2020-02-04 17:04:55','Brand','/brand/**',NULL,1),(3,'2020-02-04 17:06:13','Product Attribute','/productAttribute/**',NULL,1),(4,'2020-02-04 17:07:15','Product Category','/productCategory/**',NULL,1),(5,'2020-02-04 17:09:16','Product','/product/**',NULL,1),(6,'2020-02-04 17:09:53','Stock/SKU','/sku/**',NULL,1),(8,'2020-02-05 14:43:37','Order','/order/**','',2),(9,'2020-02-05 14:44:22','Return Requests','/returnApply/**','',2),(10,'2020-02-05 14:45:08','Return Reasons','/returnReason/**','',2),(11,'2020-02-05 14:45:43','Order Settings','/orderSetting/**','',2),(12,'2020-02-05 14:46:23','Address','/companyAddress/**','',2),(13,'2020-02-07 16:37:22','Coupon','/coupon/**','',3),(14,'2020-02-07 16:37:59','Coupon History','/couponHistory/**','',3),(15,'2020-02-07 16:38:28','Flash Sales','/flash/**','',3),(16,'2020-02-07 16:38:59','Flash Product Relation','/flashProductRelation/**','',3),(17,'2020-02-07 16:39:22','Flash Sales Session','/flashSession/**','',3),(18,'2020-02-07 16:40:07','Home Ads','/home/advertise/**','',3),(19,'2020-02-07 16:40:34','Home Brands','/home/brand/**','',3),(20,'2020-02-07 16:41:06','Home New Product','/home/newProduct/**','',3),(21,'2020-02-07 16:42:16','Recommend Product','/home/recommendProduct/**','',3),(22,'2020-02-07 16:42:48','Recommend Subject','/home/recommendSubject/**','',3),(23,'2020-02-07 16:44:56','Product Preference','/prefrenceArea/**','',5),(24,'2020-02-07 16:45:39','Product Subject','/subject/**','',5),(25,'2020-02-07 16:47:34','Admin User','/admin/**','',4),(26,'2020-02-07 16:48:24','Admin Role','/role/**','',4),(27,'2020-02-07 16:48:48','Admin Menu','/menu/**','',4),(28,'2020-02-07 16:49:45','Admin Resource','/resource/**','',4),(29,'2020-02-07 16:49:18','Admin Resource Category','/resourceCategory/**','',4),(30,'2024-05-03 08:55:41','All Resources Product','/pms/**','all APIs that start with /pms/',1);
+INSERT INTO `ums_resource` VALUES (1,'2020-02-04 17:04:55','Brand','/brand/**',NULL,1),(3,'2020-02-04 17:06:13','Product Attribute','/productAttribute/**',NULL,1),(4,'2020-02-04 17:07:15','Product Category','/productCategory/**',NULL,1),(5,'2020-02-04 17:09:16','Product','/product/**',NULL,1),(6,'2020-02-04 17:09:53','Stock/SKU','/sku/**',NULL,1),(8,'2020-02-05 14:43:37','Order','/order/**','',2),(9,'2020-02-05 14:44:22','Return Requests','/returnApply/**','',2),(10,'2020-02-05 14:45:08','Return Reasons','/returnReason/**','',2),(11,'2020-02-05 14:45:43','Order Settings','/orderSetting/**','',2),(12,'2020-02-05 14:46:23','Address','/companyAddress/**','',2),(13,'2020-02-07 16:37:22','Coupon','/coupon/**','',3),(14,'2020-02-07 16:37:59','Coupon History','/couponHistory/**','',3),(15,'2020-02-07 16:38:28','Flash Sales','/flash/**','',3),(16,'2020-02-07 16:38:59','Flash Product Relation','/flashProductRelation/**','',3),(17,'2020-02-07 16:39:22','Flash Sales Session','/flashSession/**','',3),(18,'2020-02-07 16:40:07','Home Ads','/home/advertise/**','',3),(19,'2020-02-07 16:40:34','Home Brands','/home/brand/**','',3),(20,'2020-02-07 16:41:06','Home New Product','/home/newProduct/**','',3),(21,'2020-02-07 16:42:16','Recommend Product','/home/recommendProduct/**','',3),(22,'2020-02-07 16:42:48','Recommend Subject','/home/recommendSubject/**','',3),(23,'2020-02-07 16:44:56','Product Preference','/preferenceArea/**','',5),(24,'2020-02-07 16:45:39','Product Subject','/subject/**','',5),(25,'2020-02-07 16:47:34','Admin User','/admin/**','',4),(26,'2020-02-07 16:48:24','Admin Role','/role/**','',4),(27,'2020-02-07 16:48:48','Admin Menu','/menu/**','',4),(28,'2020-02-07 16:49:45','Admin Resource','/resource/**','',4),(29,'2020-02-07 16:49:18','Admin Resource Category','/resourceCategory/**','',4),(30,'2024-05-03 08:55:41','All Resources Product','/pms/**','all APIs that start with /pms/',1);
 /*!40000 ALTER TABLE `ums_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 

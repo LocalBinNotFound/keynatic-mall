@@ -32,7 +32,7 @@ public class UmsResourceCategoryController {
         return CommonResult.success(resourceList);
     }
 
-    @ApiOperation("添加后台资源分类")
+    @ApiOperation("Add后台资源分类")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody UmsResourceCategory umsResourceCategory) {

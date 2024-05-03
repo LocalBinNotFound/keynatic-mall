@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface UmsResourceService extends IService<UmsResource> {
     /**
-     * 添加资源
+     * Add资源
      */
     boolean create(UmsResource umsResource);
 

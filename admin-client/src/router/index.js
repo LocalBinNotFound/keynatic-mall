@@ -44,73 +44,73 @@ export const asyncRouterMap = [
     children: [{
       path: 'product',
       name: 'product',
-      component: () => import('@/views/bak/pms/product/index'),
+      component: () => import('@/views/pms/product/index'),
       meta: {title: 'Product List', icon: 'product-list'}
     },
       {
         path: 'addProduct',
         name: 'addProduct',
-        component: () => import('@/views/bak/pms/product/add'),
+        component: () => import('@/views/pms/product/add'),
         meta: {title: 'Add Product', icon: 'product-add'}
       },
       {
         path: 'updateProduct',
         name: 'updateProduct',
-        component: () => import('@/views/bak/pms/product/update'),
+        component: () => import('@/views/pms/product/update'),
         meta: {title: 'Update Product', icon: 'product-add'},
         hidden: true
       },
       {
         path: 'productCate',
         name: 'productCate',
-        component: () => import('@/views/bak/pms/productCate/index'),
+        component: () => import('@/views/pms/productCate/index'),
         meta: {title: 'Product Category', icon: 'product-cate'}
       },
       {
         path: 'addProductCate',
         name: 'addProductCate',
-        component: () => import('@/views/bak/pms/productCate/add'),
+        component: () => import('@/views/pms/productCate/add'),
         meta: {title: 'Add Product Category'},
         hidden: true
       },
       {
         path: 'updateProductCate',
         name: 'updateProductCate',
-        component: () => import('@/views/bak/pms/productCate/update'),
+        component: () => import('@/views/pms/productCate/update'),
         meta: {title: 'Update Product Category'},
         hidden: true
       },
       {
         path: 'productAttr',
         name: 'productAttr',
-        component: () => import('@/views/bak/pms/productAttr/index'),
+        component: () => import('@/views/pms/productAttr/index'),
         meta: {title: 'Product Attribute', icon: 'product-attr'}
       },
       {
         path: 'productAttrList',
         name: 'productAttrList',
-        component: () => import('@/views/bak/pms/productAttr/productAttrList'),
+        component: () => import('@/views/pms/productAttr/productAttrList'),
         meta: {title: 'Product Attribute List'},
         hidden: true
       },
       {
         path: 'addProductAttr',
         name: 'addProductAttr',
-        component: () => import('@/views/bak/pms/productAttr/addProductAttr'),
+        component: () => import('@/views/pms/productAttr/addProductAttr'),
         meta: {title: 'Add Product Attribute'},
         hidden: true
       },
       {
         path: 'updateProductAttr',
         name: 'updateProductAttr',
-        component: () => import('@/views/bak/pms/productAttr/updateProductAttr'),
+        component: () => import('@/views/pms/productAttr/updateProductAttr'),
         meta: {title: 'Update Product Attribute'},
         hidden: true
       },
       {
         path: 'brand',
         name: 'brand',
-        component: () => import('@/views/bak/pms/brand/index'),
+        component: () => import('@/views/pms/brand/index'),
         meta: {title: 'Brand Management', icon: 'product-brand'}
       },
       {
@@ -139,157 +139,157 @@ export const asyncRouterMap = [
       {
         path: 'order',
         name: 'order',
-        component: () => import('@/views/bak/oms/order/index'),
+        component: () => import('@/views/oms/order/index'),
         meta: {title: 'Order List', icon: 'product-list'}
       },
       {
         path: 'orderDetail',
         name: 'orderDetail',
-        component: () => import('@/views/bak/oms/order/orderDetail'),
+        component: () => import('@/views/oms/order/orderDetail'),
         meta: {title: 'Order Detail'},
         hidden:true
       },
       {
         path: 'deliverOrderList',
         name: 'deliverOrderList',
-        component: () => import('@/views/bak/oms/order/deliverOrderList'),
+        component: () => import('@/views/oms/order/deliverOrderList'),
         meta: {title: 'Delivery List'},
         hidden:true
       },
       {
         path: 'orderSetting',
         name: 'orderSetting',
-        component: () => import('@/views/bak/oms/order/setting'),
+        component: () => import('@/views/oms/order/setting'),
         meta: {title: 'Order Settings', icon: 'order-setting'}
       },
       {
         path: 'returnApply',
         name: 'returnApply',
-        component: () => import('@/views/bak/oms/apply/index'),
+        component: () => import('@/views/oms/apply/index'),
         meta: {title: 'Return Application Processing', icon: 'order-return'}
       },
       {
         path: 'returnReason',
         name: 'returnReason',
-        component: () => import('@/views/bak/oms/apply/reason'),
+        component: () => import('@/views/oms/apply/reason'),
         meta: {title: 'Return Reason', icon: 'order-return-reason'}
       },
       {
         path: 'returnApplyDetail',
         name: 'returnApplyDetail',
-        component: () => import('@/views/bak/oms/apply/applyDetail'),
+        component: () => import('@/views/oms/apply/applyDetail'),
         meta: {title: 'Return Reason Details'},
         hidden:true
       }
     ]
   },
-  // {
-  //   path:'/sms',
-  //   component: Layout,
-  //   redirect: '/sms/coupon',
-  //   name: 'sms',
-  //   meta: {title: 'Sales', icon: 'sms'},
-  //   children: [
-  //     {
-  //       path: 'flash',
-  //       name: 'flash',
-  //       component: () => import('@/views/bak/sms/flash/index'),
-  //       meta: {title: 'Flash Event List', icon: 'sms-flash'}
-  //     },
-  //     {
-  //       path: 'flashSession',
-  //       name: 'flashSession',
-  //       component: () => import('@/views/bak/sms/flash/sessionList'),
-  //       meta: {title: 'Flash Session'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'selectSession',
-  //       name: 'selectSession',
-  //       component: () => import('@/views/bak/sms/flash/selectSessionList'),
-  //       meta: {title: 'Flash Session Select'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'flashProductRelation',
-  //       name: 'flashProductRelation',
-  //       component: () => import('@/views/bak/sms/flash/productRelationList'),
-  //       meta: {title: 'Flash Product List'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'coupon',
-  //       name: 'coupon',
-  //       component: () => import('@/views/bak/sms/coupon/index'),
-  //       meta: {title: 'Coupon List', icon: 'sms-coupon'}
-  //     },
-  //     {
-  //       path: 'addCoupon',
-  //       name: 'addCoupon',
-  //       component: () => import('@/views/bak/sms/coupon/add'),
-  //       meta: {title: 'Add Coupon'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'updateCoupon',
-  //       name: 'updateCoupon',
-  //       component: () => import('@/views/bak/sms/coupon/update'),
-  //       meta: {title: 'Update Coupon'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'couponHistory',
-  //       name: 'couponHistory',
-  //       component: () => import('@/views/bak/sms/coupon/history'),
-  //       meta: {title: 'Coupon History'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'brand',
-  //       name: 'homeBrand',
-  //       component: () => import('@/views/bak/sms/brand/index'),
-  //       meta: {title: 'Brand Recommendation', icon: 'product-brand'}
-  //     },
-  //     {
-  //       path: 'new',
-  //       name: 'homeNew',
-  //       component: () => import('@/views/bak/sms/new/index'),
-  //       meta: {title: 'New Product Recommendation', icon: 'sms-new'}
-  //     },
-  //     {
-  //       path: 'hot',
-  //       name: 'homeHot',
-  //       component: () => import('@/views/bak/sms/hot/index'),
-  //       meta: {title: 'Hot Recommendation', icon: 'sms-hot'}
-  //     },
-  //     {
-  //       path: 'subject',
-  //       name: 'homeSubject',
-  //       component: () => import('@/views/bak/sms/subject/index'),
-  //       meta: {title: 'Subject Recommendation', icon: 'sms-subject'}
-  //     },
-  //     {
-  //       path: 'advertise',
-  //       name: 'homeAdvertise',
-  //       component: () => import('@/views/bak/sms/advertise/index'),
-  //       meta: {title: 'Ads List', icon: 'sms-ad'}
-  //     },
-  //     {
-  //       path: 'addAdvertise',
-  //       name: 'addHomeAdvertise',
-  //       component: () => import('@/views/bak/sms/advertise/add'),
-  //       meta: {title: 'Add Ads'},
-  //       hidden:true
-  //     },
-  //     {
-  //       path: 'updateAdvertise',
-  //       name: 'updateHomeAdvertise',
-  //       component: () => import('@/views/bak/sms/advertise/update'),
-  //       meta: {title: 'Update Ads'},
-  //       hidden:true
-  //     }
-  //   ]
-  // },
+  {
+    path:'/sms',
+    component: Layout,
+    redirect: '/sms/coupon',
+    name: 'sms',
+    meta: {title: 'Sales', icon: 'sms'},
+    children: [
+      {
+        path: 'flash',
+        name: 'flash',
+        component: () => import('@/views/sms/flash/index'),
+        meta: {title: 'Flash Event List', icon: 'sms-flash'}
+      },
+      {
+        path: 'flashSession',
+        name: 'flashSession',
+        component: () => import('@/views/sms/flash/sessionList'),
+        meta: {title: 'Flash Session'},
+        hidden:true
+      },
+      {
+        path: 'selectSession',
+        name: 'selectSession',
+        component: () => import('@/views/sms/flash/selectSessionList'),
+        meta: {title: 'Flash Session Select'},
+        hidden:true
+      },
+      {
+        path: 'flashProductRelation',
+        name: 'flashProductRelation',
+        component: () => import('@/views/sms/flash/productRelationList'),
+        meta: {title: 'Flash Product List'},
+        hidden:true
+      },
+      {
+        path: 'coupon',
+        name: 'coupon',
+        component: () => import('@/views/sms/coupon/index'),
+        meta: {title: 'Coupon List', icon: 'sms-coupon'}
+      },
+      {
+        path: 'addCoupon',
+        name: 'addCoupon',
+        component: () => import('@/views/sms/coupon/add'),
+        meta: {title: 'Add Coupon'},
+        hidden:true
+      },
+      {
+        path: 'updateCoupon',
+        name: 'updateCoupon',
+        component: () => import('@/views/sms/coupon/update'),
+        meta: {title: 'Update Coupon'},
+        hidden:true
+      },
+      {
+        path: 'couponHistory',
+        name: 'couponHistory',
+        component: () => import('@/views/sms/coupon/history'),
+        meta: {title: 'Coupon History'},
+        hidden:true
+      },
+      {
+        path: 'brand',
+        name: 'homeBrand',
+        component: () => import('@/views/sms/brand/index'),
+        meta: {title: 'Brand Recommendation', icon: 'product-brand'}
+      },
+      {
+        path: 'new',
+        name: 'homeNew',
+        component: () => import('@/views/sms/new/index'),
+        meta: {title: 'New Product Recommendation', icon: 'sms-new'}
+      },
+      {
+        path: 'hot',
+        name: 'homeHot',
+        component: () => import('@/views/sms/hot/index'),
+        meta: {title: 'Hot Recommendation', icon: 'sms-hot'}
+      },
+      {
+        path: 'subject',
+        name: 'homeSubject',
+        component: () => import('@/views/sms/subject/index'),
+        meta: {title: 'Subject Recommendation', icon: 'sms-subject'}
+      },
+      {
+        path: 'advertise',
+        name: 'homeAdvertise',
+        component: () => import('@/views/sms/advertise/index'),
+        meta: {title: 'Ads List', icon: 'sms-ad'}
+      },
+      {
+        path: 'addAdvertise',
+        name: 'addHomeAdvertise',
+        component: () => import('@/views/sms/advertise/add'),
+        meta: {title: 'Add Ads'},
+        hidden:true
+      },
+      {
+        path: 'updateAdvertise',
+        name: 'updateHomeAdvertise',
+        component: () => import('@/views/sms/advertise/update'),
+        meta: {title: 'Update Ads'},
+        hidden:true
+      }
+    ]
+  },
   {
     path:'/ums',
     component: Layout,

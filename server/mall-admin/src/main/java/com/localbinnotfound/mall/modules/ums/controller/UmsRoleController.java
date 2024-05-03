@@ -28,7 +28,7 @@ public class UmsRoleController {
     @Autowired
     private UmsRoleService roleService;
 
-    @ApiOperation("添加角色")
+    @ApiOperation("Add角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult create(@RequestBody UmsRole role) {

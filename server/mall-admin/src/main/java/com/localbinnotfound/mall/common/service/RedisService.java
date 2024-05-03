@@ -116,12 +116,12 @@ public interface RedisService {
     Set<Object> sMembers(String key);
 
     /**
-     * 向Set结构中添加属性
+     * 向Set结构中Add属性
      */
     Long sAdd(String key, Object... values);
 
     /**
-     * 向Set结构中添加属性
+     * 向Set结构中Add属性
      */
     Long sAdd(String key, long time, Object... values);
 
@@ -156,22 +156,22 @@ public interface RedisService {
     Object lIndex(String key, long index);
 
     /**
-     * 向List结构中添加属性
+     * 向List结构中Add属性
      */
     Long lPush(String key, Object value);
 
     /**
-     * 向List结构中添加属性
+     * 向List结构中Add属性
      */
     Long lPush(String key, Object value, long time);
 
     /**
-     * 向List结构中批量添加属性
+     * 向List结构中批量Add属性
      */
     Long lPushAll(String key, Object... values);
 
     /**
-     * 向List结构中批量添加属性
+     * 向List结构中批量Add属性
      */
     Long lPushAll(String key, Long time, Object... values);
 
