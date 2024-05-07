@@ -2,9 +2,11 @@
   <div>
     <el-upload
       :action="useOss?dataObj.host:minioUploadUrl"
+      :http-request="customUploadHandler"
       :data="useOss?dataObj:null"
       list-type="picture"
-      :multiple="false" :show-file-list="showFileList"
+      :multiple="false"
+      :show-file-list="showFileList"
       :file-list="fileList"
       :before-upload="beforeUpload"
       :on-remove="handleRemove"
@@ -54,16 +56,12 @@
     data() {
       return {
         dataObj: {
-          policy: '',
-          signature: '',
           key: '',
-          ossaccessKeyId: '',
           dir: '',
           host: '',
-          // callback:'',
         },
         dialogVisible: false,
-        useOss:true, //oss->true;MinIO->false
+        useOss:true,
         minioUploadUrl:'http://localhost:8080/minio/upload',
       };
     },
@@ -84,14 +82,11 @@
         }
         return new Promise((resolve, reject) => {
           policy().then(response => {
-            _self.dataObj.policy = response.data.policy;
-            _self.dataObj.signature = response.data.signature;
-            _self.dataObj.ossaccessKeyId = response.data.accessKeyId;
             _self.dataObj.key = response.data.dir + '/${filename}';
             _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
-            // _self.dataObj.callback = response.data.callback;
             resolve(true)
+            console.log(_self.dataObj);
           }).catch(err => {
             console.log(err)
             reject(false)
@@ -107,6 +102,28 @@
         }
         this.fileList.push({name: file.name, url: url});
         this.emitInput(this.fileList[0].url);
+      },
+      customUploadHandler(uploadEvent) {
+        const file = uploadEvent.file;
+        const config = {
+          method: 'PUT',
+          headers: {
+            'Content-Type': file.type  // Ensure this matches the type expected by the presigned URL
+          },
+          body: file
+        };
+
+        fetch(uploadEvent.action, config)
+          .then(response => {
+            if (response.ok) {
+              uploadEvent.onSuccess();
+            } else {
+              uploadEvent.onError(new Error('Upload failed with status: ' + response.status));
+            }
+          })
+          .catch(error => {
+            uploadEvent.onError(error);
+          });
       }
     }
   }

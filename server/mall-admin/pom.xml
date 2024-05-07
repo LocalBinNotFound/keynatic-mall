@@ -9,4 +9,11 @@
     <artifactId>mall-admin</artifactId>
     <name>Archetype - mall-admin</name>
     <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+    </dependencies>
 </project>
