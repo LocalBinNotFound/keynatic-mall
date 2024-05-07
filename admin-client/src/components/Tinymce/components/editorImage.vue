@@ -39,6 +39,8 @@
         listObj: {},
         fileList: [],
         dataObj: {
+          publicDir:'',
+          uuid:'',
           dir: '',
           host: ''
         }
@@ -87,6 +89,8 @@
         this.listObj[fileName] = {};
         return new Promise((resolve, reject) => {
           policy().then(response => {
+            _self.dataObj.publicDir = response.data.publicDir;
+            _self.dataObj.uuid = response.data.uuid;
             _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
             _self.listObj[fileName] = {hasSuccess: false, uid: file.uid, width: this.width, height: this.height};

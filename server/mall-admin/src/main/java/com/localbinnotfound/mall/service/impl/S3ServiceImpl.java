@@ -23,10 +23,13 @@ public class S3ServiceImpl implements S3Service {
     @Value("${aws.s3.bucket-name}")
     private String bucketName;
 
+    @Value("${aws.s3.region}")
+    private String region;
+
     public S3PolicyResult policy() {
         String datePrefix = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String fileName = UUID.randomUUID() + ".jpg";
-        String objectKey = "uploads/" + datePrefix + "/" + fileName;
+        String uuid = UUID.randomUUID().toString();
+        String objectKey = "uploads/" + datePrefix + "/" + uuid + ".jpg";
 
         Date expiration = new Date();
         long expTimeMillis = System.currentTimeMillis() + 3600000;
@@ -38,9 +41,12 @@ public class S3ServiceImpl implements S3Service {
                         .withExpiration(expiration);
 
         URL url = s3Client.generatePresignedUrl(generatePresignedUrlRequest);
+        String publicDir = "https://" + bucketName + ".s3." + region + ".amazonaws.com";
 
         S3PolicyResult response = new S3PolicyResult();
-        response.setDir("uploads/" + datePrefix + "/");
+        response.setPublicDir(publicDir);
+        response.setUUID(uuid);
+        response.setDir("uploads/" + datePrefix);
         response.setHost(url.toString());
         response.setExpire(expTimeMillis / 1000);
 

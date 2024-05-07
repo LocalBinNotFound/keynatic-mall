@@ -57,6 +57,8 @@
     data() {
       return {
         dataObj: {
+          publicDir:'',
+          uuid:'',
           dir: '',
           host: '',
         },
@@ -86,6 +88,8 @@
         }
         return new Promise((resolve, reject) => {
           policy().then(response => {
+            _self.dataObj.publicDir = response.data.publicDir;
+            _self.dataObj.uuid = response.data.uuid;
             _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
             resolve(true)
@@ -99,7 +103,8 @@
       handleUploadSuccess(res, file) {
         this.showFileList = true;
         this.fileList.pop();
-        let url = this.dataObj.host + '/' + this.dataObj.dir + '/' + file.name;
+        let url = `${this.dataObj.publicDir}/${this.dataObj.dir}/${this.dataObj.uuid}.jpg`;
+        console.log(url)
         if(!this.useOss){
           url = res.data.url;
         }

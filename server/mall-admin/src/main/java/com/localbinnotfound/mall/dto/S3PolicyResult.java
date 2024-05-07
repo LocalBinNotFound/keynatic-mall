@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class S3PolicyResult {
+    private String UUID;
+    private String publicDir;
     private String dir;
     private String host;
     private long expire;
