@@ -122,7 +122,7 @@
               size="mini"
               type="danger"
               @click="handleDeleteOrder(scope.$index, scope.row)"
-              v-show="scope.row.status===4">删除订单</el-button>
+              v-show="scope.row.status===4">Delete Order</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -144,7 +144,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -162,7 +162,7 @@
     <el-dialog
       title="关闭订单"
       :visible.sync="closeOrder.dialogVisible" width="30%">
-      <span style="vertical-align: top">操作备注：</span>
+      <span style="vertical-align: top">操作备注:</span>
       <el-input
         style="width: 80%"
         type="textarea"
@@ -260,7 +260,7 @@
             value: 2
           },
           {
-            label: "删除订单",
+            label: "Delete Order",
             value: 3
           }
         ],
@@ -371,7 +371,7 @@
           }
           this.closeOrder.dialogVisible=true;
         }else if(this.operateType===3){
-          //删除订单
+          //Delete Order
           let ids=[];
           for(let i=0;i<this.multipleSelection.length;i++){
             ids.push(this.multipleSelection[i].id);
@@ -420,9 +420,9 @@
         });
       },
       deleteOrder(ids){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行该删除操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params = new URLSearchParams();

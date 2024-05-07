@@ -148,9 +148,9 @@
         }
       },
       finishCommit(isEdit) {
-        this.$confirm('是否要提交该产品', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要提交该产品', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           if(isEdit){

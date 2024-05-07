@@ -111,7 +111,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -225,9 +225,9 @@
         }
         if(this.operateType===1){
           //批量删除
-          this.$confirm('是否要进行删除操作?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
+          this.$confirm('是否要进行删除操作?', 'Confirm', {
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel',
             type: 'warning'
           }).then(() => {
             let params = new URLSearchParams();

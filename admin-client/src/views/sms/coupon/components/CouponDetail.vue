@@ -78,7 +78,7 @@
             <template slot-scope="scope">
               <el-button size="mini"
                          type="text"
-                         @click="handleDeleteProductCateRelation(scope.$index, scope.row)">删除
+                         @click="handleDeleteProductCateRelation(scope.$index, scope.row)">Delete
               </el-button>
             </template>
           </el-table-column>
@@ -117,7 +117,7 @@
             <template slot-scope="scope">
               <el-button size="mini"
                          type="text"
-                         @click="handleDeleteProductRelation(scope.$index, scope.row)">删除
+                         @click="handleDeleteProductRelation(scope.$index, scope.row)">Delete
               </el-button>
             </template>
           </el-table-column>
@@ -237,9 +237,9 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
+            this.$confirm('是否提交数据', 'Confirm', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
               type: 'warning'
             }).then(() => {
               if(this.isEdit){

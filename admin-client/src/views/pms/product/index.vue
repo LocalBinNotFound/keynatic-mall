@@ -23,17 +23,17 @@
           <el-form-item label="Search">
             <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="Product Name"></el-input>
           </el-form-item>
-          <el-form-item label="Product SKU：">
+          <el-form-item label="Product SKU:">
             <el-input style="width: 203px" v-model="listQuery.productSn" placeholder="Product SKU"></el-input>
           </el-form-item>
-          <el-form-item label="Product Category：">
+          <el-form-item label="Product Category:">
             <el-cascader
               clearable
               v-model="selectProductCateValue"
               :options="productCateOptions">
             </el-cascader>
           </el-form-item>
-          <el-form-item label="商品品牌：">
+          <el-form-item label="商品品牌:">
             <el-select v-model="listQuery.brandId" placeholder="请选择品牌" clearable>
               <el-option
                 v-for="item in brandOptions"
@@ -43,7 +43,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="上架状态：">
+          <el-form-item label="上架状态:">
             <el-select v-model="listQuery.publishStatus" placeholder="please select" clearable>
               <el-option
                 v-for="item in publishStatusOptions"
@@ -53,7 +53,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="审核状态：">
+          <el-form-item label="审核状态:">
             <el-select v-model="listQuery.verifyStatus" placeholder="please select" clearable>
               <el-option
                 v-for="item in verifyStatusOptions"
@@ -93,7 +93,7 @@
         <el-table-column label="Product Name" align="center">
           <template slot-scope="scope">
             <p>{{scope.row.name}}</p>
-            <p>品牌：{{scope.row.brandName}}</p>
+            <p>品牌:{{scope.row.brandName}}</p>
           </template>
         </el-table-column>
         <el-table-column label="价格/货号" width="120" align="center">
@@ -161,7 +161,7 @@
               </el-button>
               <el-button
                 size="mini"
-                @click="handleUpdateProduct(scope.$index, scope.row)">编辑
+                @click="handleUpdateProduct(scope.$index, scope.row)">Edit
               </el-button>
             </p>
             <p>
@@ -172,7 +172,7 @@
               <el-button
                 size="mini"
                 type="danger"
-                @click="handleDelete(scope.$index, scope.row)">删除
+                @click="handleDelete(scope.$index, scope.row)">Delete
               </el-button>
             </p>
           </template>
@@ -196,7 +196,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -462,9 +462,9 @@
           });
           return
         }
-        this.$confirm('是否要进行修改', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行修改', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(()=>{
           updateSkuStockList(this.editSkuInfo.productId,this.editSkuInfo.stockList).then(response=>{
@@ -501,9 +501,9 @@
           });
           return;
         }
-        this.$confirm('是否要进行该批量操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行该批量操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let ids=[];
@@ -572,9 +572,9 @@
         this.listQuery = Object.assign({}, defaultListQuery);
       },
       handleDelete(index, row){
-        this.$confirm('是否要进行删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行删除操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let ids = [];

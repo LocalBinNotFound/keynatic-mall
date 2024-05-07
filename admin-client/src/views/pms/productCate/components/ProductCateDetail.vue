@@ -4,12 +4,12 @@
              :rules="rules"
              ref="productCateFrom"
              label-width="150px">
-      <el-form-item label="分类名称：" prop="name">
+      <el-form-item label="Category Name:" prop="name">
         <el-input v-model="productCate.name"></el-input>
       </el-form-item>
-      <el-form-item label="上级分类：">
+      <el-form-item label="Parent:">
         <el-select v-model="productCate.parentId"
-                   placeholder="请选择分类">
+                   placeholder="please select">
           <el-option
             v-for="item in selectProductCateList"
             :key="item.id"
@@ -18,25 +18,25 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="数量单位：">
+      <el-form-item label="Unit:">
         <el-input v-model="productCate.productUnit"></el-input>
       </el-form-item>
-      <el-form-item label="排序：">
+      <el-form-item label="Rank:">
         <el-input v-model="productCate.sort"></el-input>
       </el-form-item>
-      <el-form-item label="是否显示：">
+      <el-form-item label="Show/Hide:">
         <el-radio-group v-model="productCate.showStatus">
-          <el-radio :label="1">是</el-radio>
-          <el-radio :label="0">否</el-radio>
+          <el-radio :label="1">Yes</el-radio>
+          <el-radio :label="0">No</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="是否显示在导航栏：">
+      <el-form-item label="Nav Bar:">
         <el-radio-group v-model="productCate.navStatus">
-          <el-radio :label="1">是</el-radio>
-          <el-radio :label="0">否</el-radio>
+          <el-radio :label="1">Yes</el-radio>
+          <el-radio :label="0">No</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="分类图标：">
+      <el-form-item label="Icon:">
         <single-upload v-model="productCate.icon"></single-upload>
       </el-form-item>
       <el-form-item v-for="(filterProductAttr, index) in filterProductAttrList"
@@ -48,19 +48,19 @@
           v-model="filterProductAttr.value"
           :options="filterAttrs">
         </el-cascader>
-        <el-button style="margin-left: 20px" @click.prevent="removeFilterAttr(filterProductAttr)">删除</el-button>
+        <el-button style="margin-left: 20px" @click.prevent="removeFilterAttr(filterProductAttr)">Delete</el-button>
       </el-form-item>
       <el-form-item>
-        <el-button size="small" type="primary" @click="handleAddFilterAttr()">新增</el-button>
+        <el-button size="small" type="primary" @click="handleAddFilterAttr()">Add</el-button>
       </el-form-item>
-      <el-form-item label="关键词：">
+      <el-form-item label="Keyword:">
         <el-input v-model="productCate.keywords"></el-input>
       </el-form-item>
-      <el-form-item label="分类描述：">
+      <el-form-item label="Description:">
         <el-input type="textarea" :autosize="true" v-model="productCate.description"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="onSubmit('productCateFrom')">提交</el-button>
+        <el-button type="primary" @click="onSubmit('productCateFrom')">Submit</el-button>
         <el-button v-if="!isEdit" @click="resetForm('productCateFrom')">Reset</el-button>
       </el-form-item>
     </el-form>
@@ -100,8 +100,8 @@
         selectProductCateList: [],
         rules: {
           name: [
-            {required: true, message: '请输入品牌名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: 'Please enter category name', trigger: 'blur'},
+            {min: 2, max: 140, message: 'Limited to 2 to 140 characters', trigger: 'blur'}
           ]
         },
         filterAttrs: [],
@@ -140,7 +140,7 @@
         // parentiId=0 只筛选一级分类
         fetchList(0, {pageSize: 100, pageNum: 1}).then(response => {
           this.selectProductCateList = response.data.list;
-          this.selectProductCateList.unshift({id: 0, name: '无上级分类'});  //向数组的开头Add一个或更多元素
+          this.selectProductCateList.unshift({id: 0, name: 'NO PARENT CATEGORY'});
         });
       },
       getProductAttrCateList() {
@@ -178,14 +178,13 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
+            this.$confirm('Confirm submission?', 'Confirm', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
               type: 'warning'
             }).then(() => {
               // 修改
               if (this.isEdit) {
-                // value=[商品类型id,商品属性id]，但是存在数据库里面只要  商品属性id
                 this.productCate.productAttributeIdList = this.getProductAttributeIdList();
                 updateProductCate(this.$route.query.id, this.productCate).then(response => {
                   this.$message({
@@ -196,16 +195,13 @@
                   this.$router.back();
                 });
               } else {
-              // Add
-              // 处理筛选属性的选择value.  因为选择的value=[商品类型id,商品属性id],但是存在数据库里面只要  分类，商品属性id
-                // console.log(this.filterProductAttrList); 筛选前
+
                 this.productCate.productAttributeIdList = this.getProductAttributeIdList();
-                //console.log(this.productCate.productAttributeIdList); 筛选后，只需要商品属性
                 createProductCate(this.productCate).then(response => {
                   this.$refs[formName].resetFields();
                   this.resetForm(formName);
                   this.$message({
-                    message: '提交Success',
+                    message: 'Success',
                     type: 'success',
                     duration: 1000
                   });
@@ -215,7 +211,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: 'Network error',
               type: 'error',
               duration: 1000
             });
@@ -263,7 +259,7 @@
     filters: {
       filterLabelFilter(index) {
         if (index === 0) {
-          return '筛选属性：';
+          return 'Filter Property:';
         } else {
           return '';
         }

@@ -9,7 +9,7 @@
 
 <script>
   import editorImage from './components/editorImage'
-  import '../../../static/tinymce4.7.5/langs/zh_CN'
+  import '@/../static/tinymce4.7.5/langs/zh_CN'
 
   const plugins = [
  `advlist anchor autolink autosave code codesample colorpicker colorpicker

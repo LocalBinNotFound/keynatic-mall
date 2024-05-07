@@ -44,12 +44,12 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
+              @click="handleUpdate(scope.$index, scope.row)">Edit
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -72,7 +72,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -108,7 +108,7 @@
         multipleSelection: [],
         operates: [
           {
-            label: "删除",
+            label: "Delete",
             value: "deleteProductAttr"
           }
         ]
@@ -170,9 +170,9 @@
         this.$router.push({path:'/pms/updateProductAttr',query:{id:row.id}});
       },
       handleDeleteProductAttr(ids) {
-        this.$confirm('是否要删除该属性', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要删除该属性', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let data = new URLSearchParams();

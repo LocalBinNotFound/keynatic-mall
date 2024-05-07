@@ -36,11 +36,11 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">编辑
+                       @click="handleUpdate(scope.$index, scope.row)">Edit
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -121,9 +121,9 @@
         this.flashSession = Object.assign({},defaultFlashSession);
       },
       handleStatusChange(index,row){
-        this.$confirm('是否要修改该状态?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改该状态?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateStatus(row.id, {status: row.status}).then(response => {
@@ -148,9 +148,9 @@
         this.flashSession.endTime=new Date(row.endTime);
       },
       handleDelete(index,row){
-        this.$confirm('是否要删除该时间段?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要删除该时间段?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           deleteSession(row.id).then(response => {
@@ -163,9 +163,9 @@
         });
       },
       handleDialogConfirm() {
-        this.$confirm('是否要确认?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要确认?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           if (this.isEdit) {

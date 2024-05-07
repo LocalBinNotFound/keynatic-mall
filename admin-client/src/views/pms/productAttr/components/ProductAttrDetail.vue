@@ -5,7 +5,7 @@
         <el-input v-model="productAttr.name"></el-input>
       </el-form-item>
       <el-form-item label="商品类型：">
-        <el-select :disabled="isEdit" v-model="productAttr.productAttributeCategoryId" placeholder="请选择">
+        <el-select :disabled="isEdit" v-model="productAttr.productAttributeCategoryId" placeholder="please select">
           <el-option
             v-for="item in productAttrCateList"
             :key="item.id"
@@ -136,9 +136,9 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
+            this.$confirm('是否提交数据', 'Confirm', {
+              confirmButtonText: 'Confirm',
+              cancelButtonText: 'Cancel',
               type: 'warning'
             }).then(() => {
               // 修改

@@ -42,10 +42,10 @@
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑</el-button>
+              @click="handleUpdate(scope.$index, scope.row)">Edit</el-button>
             <el-button
               size="mini"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -67,7 +67,7 @@
         @click="handleBatchOperate"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -87,13 +87,13 @@
       :visible.sync="dialogVisible" width="30%">
       <el-form :model="returnReason"
                ref="reasonForm" label-width="150px">
-        <el-form-item label="原因类型：">
+        <el-form-item label="原因类型:">
           <el-input v-model="returnReason.name" class="input-width"></el-input>
         </el-form-item>
-        <el-form-item label="排序：">
+        <el-form-item label="排序:">
           <el-input v-model="returnReason.sort" class="input-width"></el-input>
         </el-form-item>
-        <el-form-item label="是否启用：">
+        <el-form-item label="是否启用:">
           <el-switch v-model="returnReason.status" :active-value="1" :inactive-value="0"></el-switch>
         </el-form-item>
       </el-form>
@@ -129,7 +129,7 @@
         operateType:null,
         operateOptions: [
           {
-            label: "删除",
+            label: "Delete",
             value: 1
           }
         ],
@@ -243,9 +243,9 @@
         });
       },
       deleteReason(ids){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行该删除操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params = new URLSearchParams();

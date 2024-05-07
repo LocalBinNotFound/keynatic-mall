@@ -43,8 +43,8 @@
         </el-table-column>
       </el-table>
       <div style="margin-top: 15px;text-align: center">
-        <el-button @click="cancel">取消</el-button>
-        <el-button @click="confirm" type="primary">确定</el-button>
+        <el-button @click="cancel">Cancel</el-button>
+        <el-button @click="confirm" type="primary">Confirm</el-button>
       </div>
     </div>
   </div>
@@ -68,9 +68,9 @@
         this.$router.back();
       },
       confirm(){
-        this.$confirm('是否要进行发货操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行发货操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           deliveryOrder(this.list).then(response=>{

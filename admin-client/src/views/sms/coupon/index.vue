@@ -85,7 +85,7 @@
               编辑</el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                       @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -220,9 +220,9 @@
         this.$router.push({path: '/sms/updateCoupon', query: {id: row.id}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否进行删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否进行删除操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           deleteCoupon(row.id).then(response=>{

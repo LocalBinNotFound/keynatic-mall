@@ -33,7 +33,7 @@
           <el-button size="mini" @click="showMarkOrderDialog">备注订单</el-button>
         </div>
         <div class="operate-button-container" v-show="order.status===4">
-          <el-button size="mini" @click="handleDeleteOrder">删除订单</el-button>
+          <el-button size="mini" @click="handleDeleteOrder">Delete Order</el-button>
           <el-button size="mini" @click="showMarkOrderDialog">备注订单</el-button>
         </div>
       </div>
@@ -118,7 +118,7 @@
         <el-table-column label="Product Name" align="center">
           <template slot-scope="scope">
             <p>{{scope.row.productName}}</p>
-            <p>品牌：{{scope.row.productBrand}}</p>
+            <p>品牌:{{scope.row.productBrand}}</p>
           </template>
         </el-table-column>
         <el-table-column label="价格/货号" width="120" align="center">
@@ -527,9 +527,9 @@
         }
       },
       handleUpdateReceiverInfo(){
-        this.$confirm('是否要修改收货信息?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改收货信息?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateReceiverInfo(this.receiverInfo).then(response=>{
@@ -552,9 +552,9 @@
         this.moneyInfo.status=this.order.status;
       },
       handleUpdateMoneyInfo(){
-        this.$confirm('是否要修改费用信息?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改费用信息?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateMoneyInfo(this.moneyInfo).then(response=>{
@@ -575,9 +575,9 @@
         this.message.content=null;
       },
       handleSendMessage(){
-        this.$confirm('是否要发送站内信?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要发送站内信?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.messageDialogVisible=false;
@@ -593,9 +593,9 @@
         this.closeInfo.id=this.id;
       },
       handleCloseOrder(){
-        this.$confirm('是否要关闭?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要关闭?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
             let params = new URLSearchParams();
@@ -619,9 +619,9 @@
         this.closeOrder.note=null;
       },
       handleMarkOrder(){
-        this.$confirm('是否要备注订单?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要备注订单?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params = new URLSearchParams();
@@ -641,9 +641,9 @@
         });
       },
       handleDeleteOrder(){
-        this.$confirm('是否要进行该删除操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要进行该删除操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params = new URLSearchParams();

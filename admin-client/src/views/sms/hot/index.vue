@@ -77,7 +77,7 @@
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -100,7 +100,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -209,7 +209,7 @@
             value: 1
           },
           {
-            label: "删除",
+            label: "Delete",
             value: 2
           }
         ],
@@ -287,7 +287,7 @@
           //取消推荐
           this.updateRecommendStatusStatus(ids,0);
         } else if(this.operateType===2){
-          //删除
+          //Delete
           this.deleteProduct(ids);
         }else {
           this.$message({
@@ -332,9 +332,9 @@
             productName:this.dialogData.multipleSelection[i].name
           });
         }
-        this.$confirm('使用要进行Add操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('使用要进行Add操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           createHotProduct(selectProducts).then(response=>{
@@ -354,9 +354,9 @@
         this.sortDialogData.id=row.id;
       },
       handleUpdateSort(){
-        this.$confirm('是否要修改排序?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改排序?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateHotProductSort(this.sortDialogData).then(response=>{
@@ -378,9 +378,9 @@
         })
       },
       updateRecommendStatusStatus(ids,status){
-        this.$confirm('是否要修改推荐状态?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改推荐状态?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params=new URLSearchParams();
@@ -402,9 +402,9 @@
         });
       },
       deleteProduct(ids){
-        this.$confirm('是否要删除该推荐?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要Delete该推荐?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params=new URLSearchParams();

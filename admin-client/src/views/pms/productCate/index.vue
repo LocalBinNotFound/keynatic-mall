@@ -15,22 +15,22 @@
                 style="width: 100%"
                 :data="list"
                 v-loading="listLoading" border>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="Index" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="分类名称" align="center">
+        <el-table-column label="Category Name" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="级别" width="100" align="center">
+        <el-table-column label="Level" width="100" align="center">
           <template slot-scope="scope">{{scope.row.level | levelFilter}}</template>
         </el-table-column>
-        <el-table-column label="商品数量" width="100" align="center">
+        <el-table-column label="Quantity" width="100" align="center">
           <template slot-scope="scope">{{scope.row.productCount }}</template>
         </el-table-column>
-        <el-table-column label="数量单位" width="100" align="center">
+        <el-table-column label="Unit" width="100" align="center">
           <template slot-scope="scope">{{scope.row.productUnit }}</template>
         </el-table-column>
-        <el-table-column label="导航栏" width="100" align="center">
+        <el-table-column label="Nav Bar" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleNavStatusChange(scope.$index, scope.row)"
@@ -40,7 +40,7 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="是否显示" width="100" align="center">
+        <el-table-column label="Show/Hide" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
               @change="handleShowStatusChange(scope.$index, scope.row)"
@@ -50,32 +50,28 @@
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="排序" width="100" align="center">
+        <el-table-column label="Rank" width="100" align="center">
           <template slot-scope="scope">{{scope.row.sort }}</template>
         </el-table-column>
-        <el-table-column label="设置" width="200" align="center">
+        <el-table-column label="Settings" width="200" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
               :disabled="scope.row.level | disableNextLevel"
               @click="handleShowNextLevel(scope.$index, scope.row)">View Children
             </el-button>
-            <!-- <el-button
-              size="mini"
-              @click="handleTransferProduct(scope.$index, scope.row)">转移商品
-            </el-button> -->
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200" align="center">
+        <el-table-column label="Action" width="200" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
+              @click="handleUpdate(scope.$index, scope.row)">Edit
             </el-button>
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除
+              @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -97,7 +93,6 @@
 </template>
 
 <script>
-// 把所有的ajax请求 都统一封装
   import {fetchList,deleteProductCate,updateShowStatus,updateNavStatus} from '@/api/productCate'
 
   export default {
@@ -114,9 +109,9 @@
         parentId: 0
       }
     },
-    created() {    // 初始化
-      this.resetParentId();   // 获取当前父ID
-      this.getList();  // getList 去后端查询数据
+    created() {    // init
+      this.resetParentId();   // get cur parent id
+      this.getList();
     },
     watch: {
       $route(route) {
@@ -196,9 +191,9 @@
         this.$router.push({path:'/pms/updateProductCate',query:{id:row.id}});
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('Delete current category?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           deleteProductCate(row.id).then(response => {
@@ -215,13 +210,15 @@
     filters: {
       levelFilter(value) {
         if (value === 0) {
-          return '一级';
+          return 'Level 1';
         } else if (value === 1) {
-          return '二级';
+          return 'Level 2';
+        } else if (value === 2) {
+          return 'Level 3';
         }
       },
       disableNextLevel(value) {
-        if (value === 0) {
+        if (value === 0 || value === 1) {
           return false;
         } else {
           return true;

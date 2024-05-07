@@ -6,8 +6,6 @@ spring:
     name: mall-tiny
   profiles:
     active: dev
-#  main:
-#    allow-circular-references: true
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -52,3 +50,9 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
+
+aliyun:
+  oss:
+    endpoint: ${ALIYUN_OSS_ENDPOINT}
+    accessKeyId: ${ALIYUN_OSS_ACCESSKEYID}
+    accessKeySecret: ${ALIYUN_OSS_ACCESSKEYSECRET}

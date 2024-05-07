@@ -45,11 +45,11 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">编辑
+                       @click="handleUpdate(scope.$index, scope.row)">Edit
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -204,9 +204,9 @@
         this.flashProductRelation = Object.assign({},row);
       },
       handleDelete(index,row){
-        this.$confirm('是否要删除该商品?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要删除该商品?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           deleteFlashProductRelation(row.id).then(response => {
@@ -250,9 +250,9 @@
             flashPromotionSessionId:this.listQuery.flashPromotionSessionId
           });
         }
-        this.$confirm('使用要进行Add操作?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('使用要进行Add操作?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           createFlashProductRelation(selectProducts).then(response=>{
@@ -267,9 +267,9 @@
         });
       },
       handleEditDialogConfirm(){
-        this.$confirm('是否要确认?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要确认?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
             updateFlashProductRelation(this.flashProductRelation.id,this.flashProductRelation).then(response => {

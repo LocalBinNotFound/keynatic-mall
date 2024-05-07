@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top: 50px">
     <el-form :model="value" ref="productAttrForm" label-width="120px" style="width: 720px" size="small">
-      <el-form-item label="属性类型：">
+      <el-form-item label="属性类型:">
         <el-select v-model="value.productAttributeCategoryId"
                    placeholder="请选择属性类型"
                    @change="handleProductAttrChange">
@@ -13,10 +13,10 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="商品规格：">
+      <el-form-item label="商品规格:">
         <el-card shadow="never" class="cardBg">
           <div v-for="(productAttr,idx) in selectProductAttr">
-            {{productAttr.name}}：
+            {{productAttr.name}}:
             <el-checkbox-group v-if="productAttr.handAddStatus===0" v-model="selectProductAttr[idx].values">
               <el-checkbox v-for="item in getInputListArr(productAttr.inputList)" :label="item" :key="item"
                            class="littleMarginLeft"></el-checkbox>
@@ -26,7 +26,7 @@
                 <div v-for="(item,index) in selectProductAttr[idx].options" style="display: inline-block"
                      class="littleMarginLeft">
                   <el-checkbox :label="item" :key="item"></el-checkbox>
-                  <el-button type="text" class="littleMarginLeft" @click="handleRemoveProductAttrValue(idx,index)">删除
+                  <el-button type="text" class="littleMarginLeft" @click="handleRemoveProductAttrValue(idx,index)">Delete
                   </el-button>
                 </div>
               </el-checkbox-group>
@@ -85,7 +85,7 @@
             <template slot-scope="scope">
               <el-button
                 type="text"
-                @click="handleRemoveProductSku(scope.$index, scope.row)">删除
+                @click="handleRemoveProductSku(scope.$index, scope.row)">Delete
               </el-button>
             </template>
           </el-table-column>
@@ -404,9 +404,9 @@
         }
       },
       handleRefreshProductSkuList() {
-        this.$confirm('刷新列表将导致sku信息重新生成，是否要刷新', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('刷新列表将导致sku信息重新生成，是否要刷新', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           this.refreshProductAttrPics();
@@ -414,9 +414,9 @@
         });
       },
       handleSyncProductSkuPrice(){
-        this.$confirm('将同步第一个sku的价格到所有sku,是否继续', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('将同步第一个sku的价格到所有sku,是否继续', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
          if(this.value.skuStockList!==null&&this.value.skuStockList.length>0){
@@ -432,9 +432,9 @@
         });
       },
       handleSyncProductSkuStock(){
-        this.$confirm('将同步第一个sku的库存到所有sku,是否继续', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('将同步第一个sku的库存到所有sku,是否继续', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           if(this.value.skuStockList!==null&&this.value.skuStockList.length>0){

@@ -1,7 +1,7 @@
 <template>
   <div style="margin-top: 50px">
     <el-form :model="value" ref="productSaleForm" label-width="120px" style="width: 600px" size="small">
-      <el-form-item label="赠送积分：">
+      <el-form-item label="赠送积分:">
         <el-input v-model="value.giftPoint"></el-input>
       </el-form-item>
       <el-form-item label="赠送成长值：">
@@ -122,7 +122,7 @@
             align="center"
             label="操作">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleRemoveProductLadder(scope.$index, scope.row)">删除</el-button>
+              <el-button type="text" @click="handleRemoveProductLadder(scope.$index, scope.row)">Delete</el-button>
               <el-button type="text" @click="handleAddProductLadder(scope.$index, scope.row)">Add</el-button>
             </template>
           </el-table-column>
@@ -151,7 +151,7 @@
             align="center"
             label="操作">
             <template slot-scope="scope">
-              <el-button type="text" @click="handleRemoveFullReduction(scope.$index, scope.row)">删除</el-button>
+              <el-button type="text" @click="handleRemoveFullReduction(scope.$index, scope.row)">Delete</el-button>
               <el-button type="text" @click="handleAddFullReduction(scope.$index, scope.row)">Add</el-button>
             </template>
           </el-table-column>

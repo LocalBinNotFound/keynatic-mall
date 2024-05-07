@@ -94,11 +94,11 @@
           <template slot-scope="scope">
             <el-button size="mini"
                        type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">编辑
+                       @click="handleUpdate(scope.$index, scope.row)">Edit
             </el-button>
             <el-button size="mini"
                        type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+                       @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
@@ -121,7 +121,7 @@
         @click="handleBatchOperate()"
         type="primary"
         size="small">
-        确定
+        Confirm
       </el-button>
     </div>
     <div class="pagination-container">
@@ -170,7 +170,7 @@
         multipleSelection: [],
         operates: [
           {
-            label: "删除",
+            label: "Delete",
             value: 0
           }
         ],
@@ -217,9 +217,9 @@
         this.getList();
       },
       handleUpdateStatus(index,row){
-        this.$confirm('是否要修改上线/下线状态?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要修改上线/下线状态?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           updateStatus(row.id,{status:row.status}).then(response=>{
@@ -254,7 +254,7 @@
           ids.push(this.multipleSelection[i].id);
         }
         if(this.operateType===0){
-          //删除
+          //Delete
           this.deleteHomeAdvertise(ids);
         }else {
           this.$message({
@@ -279,9 +279,9 @@
         })
       },
       deleteHomeAdvertise(ids){
-        this.$confirm('是否要删除该广告?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        this.$confirm('是否要删除该广告?', 'Confirm', {
+          confirmButtonText: 'Confirm',
+          cancelButtonText: 'Cancel',
           type: 'warning'
         }).then(() => {
           let params=new URLSearchParams();

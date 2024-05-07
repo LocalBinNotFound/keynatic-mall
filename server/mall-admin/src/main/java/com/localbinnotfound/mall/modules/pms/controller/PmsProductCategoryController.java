@@ -10,6 +10,8 @@ import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 产品分类 前端控制器
@@ -32,6 +34,46 @@ public class PmsProductCategoryController {
         Page page = productCategoryService.list(parentId, pageNum, pageSize);
 
         return CommonResult.success(CommonPage.restPage(page));
+    }
+
+    /**
+     *      url:'/productCategory/update/showStatus',
+     *      method:'post',
+     *              data.append('ids',ids);
+     *              data.append('showStatus',row.showStatus);
+     **/
+    @RequestMapping(value="/update/navStatus", method = RequestMethod.POST)
+    public CommonResult updateNavStatus(@RequestParam(value="ids", defaultValue = "1") List<Long> ids,
+                                        @RequestParam(value="navStatus") Integer navStatus) {
+        boolean result = productCategoryService.updateNavStatus(ids, navStatus);
+
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    /**
+     *     url:'/productCategory/update/showStatus',
+     *     method:'post',
+     *     data:data
+     */
+    @RequestMapping(value="/update/showStatus", method = RequestMethod.POST)
+    public CommonResult updateShowStatus(@RequestParam(value="ids", defaultValue = "1") List<Long> ids,
+                                         @RequestParam(value="showStatus") Integer showStatus) {
+        boolean result = productCategoryService.updateShowStatus(ids, showStatus);
+
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    /**
+     *     url:'/productCategory/delete/'+id,
+     *     method:'post'
+     **/
+    @RequestMapping(value="/delete/{id}", method = RequestMethod.POST)
+    public CommonResult delete(@PathVariable Long id) {
+        boolean result = productCategoryService.removeById(id);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
     }
 }
 
