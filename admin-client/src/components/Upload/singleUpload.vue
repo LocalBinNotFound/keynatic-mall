@@ -11,7 +11,8 @@
       :before-upload="beforeUpload"
       :on-remove="handleRemove"
       :on-success="handleUploadSuccess"
-      :on-preview="handlePreview">
+      :on-preview="handlePreview"
+      accept=".jpg, .jpeg, .png">
       <el-button size="small" type="primary">Click to Upload</el-button>
       <div slot="tip" class="el-upload__tip">Upload jpg/png file that is smaller than 10MB only</div>
     </el-upload>
@@ -56,7 +57,6 @@
     data() {
       return {
         dataObj: {
-          key: '',
           dir: '',
           host: '',
         },
@@ -76,13 +76,16 @@
         this.dialogVisible = true;
       },
       beforeUpload(file) {
+        const isJPGorPNG = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJPGorPNG) {
+          return false;
+        }
         let _self = this;
         if(!this.useOss){
           return true;
         }
         return new Promise((resolve, reject) => {
           policy().then(response => {
-            _self.dataObj.key = response.data.dir + '/${filename}';
             _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
             resolve(true)

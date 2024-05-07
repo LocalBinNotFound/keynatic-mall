@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class S3ServiceImpl implements S3Service {
@@ -24,7 +25,8 @@ public class S3ServiceImpl implements S3Service {
 
     public S3PolicyResult policy() {
         String datePrefix = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String objectKey = "uploads/" + datePrefix + "/${filename}";
+        String fileName = UUID.randomUUID() + ".jpg";
+        String objectKey = "uploads/" + datePrefix + "/" + fileName;
 
         Date expiration = new Date();
         long expTimeMillis = System.currentTimeMillis() + 3600000;

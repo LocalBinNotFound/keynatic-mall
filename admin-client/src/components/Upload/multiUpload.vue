@@ -34,7 +34,6 @@
     data() {
       return {
         dataObj: {
-          key: '',
           dir: '',
           host: ''
         },
@@ -75,7 +74,6 @@
         }
         return new Promise((resolve, reject) => {
           policy().then(response => {
-            _self.dataObj.key = response.data.dir + '/${filename}';
             _self.dataObj.dir = response.data.dir;
             _self.dataObj.host = response.data.host;
             resolve(true)
