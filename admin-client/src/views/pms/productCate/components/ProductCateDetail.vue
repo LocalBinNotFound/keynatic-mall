@@ -24,7 +24,7 @@
       <el-form-item label="Rank:">
         <el-input v-model="productCate.sort"></el-input>
       </el-form-item>
-      <el-form-item label="Show/Hide:">
+      <el-form-item label="Show Status:">
         <el-radio-group v-model="productCate.showStatus">
           <el-radio :label="1">Yes</el-radio>
           <el-radio :label="0">No</el-radio>

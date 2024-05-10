@@ -278,7 +278,7 @@
       handleBatchOperate(){
         if (this.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: 'Please select at least one record',
             type: 'warning',
             duration: 1000
           });
@@ -299,7 +299,7 @@
           this.deleteSubject(ids);
         }else {
           this.$message({
-            message: '请选择批量操作类型',
+            message: 'Please select batch operation type',
             type: 'warning',
             duration: 1000
           });
@@ -328,7 +328,7 @@
       handleSelectDialogConfirm(){
         if (this.dialogData.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: 'Please select at least one record',
             type: 'warning',
             duration: 1000
           });

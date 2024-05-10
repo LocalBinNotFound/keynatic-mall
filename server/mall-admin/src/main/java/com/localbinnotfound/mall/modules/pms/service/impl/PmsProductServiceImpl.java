@@ -1,5 +1,6 @@
 package com.localbinnotfound.mall.modules.pms.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.modules.pms.model.PmsProduct;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductMapper;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
@@ -17,4 +18,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProduct> implements PmsProductService {
 
+    @Override
+    public Page list(Integer pageNum, Integer pageSize) {
+        Page page = new Page(pageNum, pageSize);
+        return this.page(page);
+    }
 }

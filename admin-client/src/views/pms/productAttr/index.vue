@@ -16,31 +16,31 @@
                 :data="list"
                 v-loading="listLoading"
                 border>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="Index" width="100" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="类型名称" align="center">
+        <el-table-column label="Attribute Name" align="center">
           <template slot-scope="scope">{{scope.row.name}}</template>
         </el-table-column>
-        <el-table-column label="属性数量" width="200" align="center">
+        <el-table-column label="Property Quantity" width="200" align="center">
           <template slot-scope="scope">{{scope.row.attributeCount==null?0:scope.row.attributeCount}}</template>
         </el-table-column>
-        <el-table-column label="参数数量" width="200" align="center">
+        <el-table-column label="Parameter Quantity" width="200" align="center">
           <template slot-scope="scope">{{scope.row.paramCount==null?0:scope.row.paramCount}}</template>
         </el-table-column>
-        <el-table-column label="设置" width="200" align="center">
+        <el-table-column label="Settings" width="250" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
-              @click="getAttrList(scope.$index, scope.row)">属性列表
+              @click="getAttrList(scope.$index, scope.row)">Prop List
             </el-button>
             <el-button
               size="mini"
-              @click="getParamList(scope.$index, scope.row)">参数列表
+              @click="getParamList(scope.$index, scope.row)">Param List
             </el-button>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200" align="center">
+        <el-table-column label="Actions" width="200" align="center">
           <template slot-scope="scope">
             <el-button
               size="mini"
@@ -72,13 +72,13 @@
       :visible.sync="dialogVisible"
       width="30%">
       <el-form ref="productAttrCatForm" :model="productAttrCate" :rules="rules" label-width="120px">
-        <el-form-item label="类型名称" prop="name">
+        <el-form-item label="Attribute Name" prop="name">
           <el-input v-model="productAttrCate.name" auto-complete="off"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="handleConfirm('productAttrCatForm')">确 定</el-button>
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="handleConfirm('productAttrCatForm')">Confirm</el-button>
       </span>
     </el-dialog>
   </div>
@@ -105,7 +105,7 @@
         },
         rules: {
           name: [
-            { required: true, message: '请输入类型名称', trigger: 'blur' }
+            { required: true, message: 'Please enter attribute name', trigger: 'blur' }
           ]
         }
       }
@@ -125,7 +125,7 @@
       addProductAttrCate() {
         // https://element.eleme.io/#/zh-CN/component/dialog
         this.dialogVisible = true;   // 显示对话框
-        this.dialogTitle = "Add类型";
+        this.dialogTitle = "Add Attribute";
       },
       handleSizeChange(val) {
         this.listQuery.pageNum = 1;
@@ -137,7 +137,7 @@
         this.getList();
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', 'Confirm', {
+        this.$confirm('Confirm delete?', 'Confirm', {
           confirmButtonText: 'Confirm',
           cancelButtonText: 'Cancel',
           type: 'warning'
@@ -154,7 +154,7 @@
       },
       handleUpdate(index, row) {
         this.dialogVisible = true;
-        this.dialogTitle = "编辑类型";
+        this.dialogTitle = "Edit Attribute";
         this.productAttrCate.name = row.name;
         this.productAttrCate.id = row.id;
       },
@@ -165,13 +165,12 @@
         this.$router.push({path: '/pms/productAttrList',query:{cid:row.id,cname:row.name,type:1}})
       },
       handleConfirm(formName){
-        // 对整个表单进行校验的方法 https://element.eleme.io/#/zh-CN/component/form
         this.$refs[formName].validate((valid) => {
           if (valid) {
             let data = new URLSearchParams();    // formdata
             data.append("name",this.productAttrCate.name);
             // Add
-            if(this.dialogTitle==="Add类型"){
+            if(this.dialogTitle==="Add Attribute"){
               createProductAttrCate(data).then(response=>{
                 this.$message({
                   message: 'AddSuccess',

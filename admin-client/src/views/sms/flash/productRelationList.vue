@@ -236,7 +236,7 @@
       handleSelectDialogConfirm(){
         if (this.dialogData.multipleSelection < 1) {
           this.$message({
-            message: '请选择一条记录',
+            message: 'Please select at least one record',
             type: 'warning',
             duration: 1000
           });

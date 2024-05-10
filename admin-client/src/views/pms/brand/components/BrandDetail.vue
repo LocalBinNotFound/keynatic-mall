@@ -1,35 +1,35 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <el-form :model="brand" :rules="rules" ref="brandFrom" label-width="150px">
-      <el-form-item label="品牌名称:" prop="name">
+      <el-form-item label="Brand Name:" prop="name">
         <el-input v-model="brand.name"></el-input>
       </el-form-item>
-      <el-form-item label="品牌首字母:">
+      <el-form-item label="Alphabet:">
         <el-input v-model="brand.firstLetter"></el-input>
       </el-form-item>
-      <el-form-item label="品牌LOGO:" prop="logo">
+      <el-form-item label="Brand LOGO:" prop="logo">
         <single-upload v-model="brand.logo"></single-upload>
       </el-form-item>
-      <el-form-item label="品牌专区大图:">
+      <el-form-item label="Brand Big Picture:">
         <single-upload v-model="brand.bigPic"></single-upload>
       </el-form-item>
-      <el-form-item label="品牌故事:">
+      <el-form-item label="Brand Story:">
         <el-input
           placeholder="please enter text"
           type="textarea"
           v-model="brand.brandStory"
           :autosize="true"></el-input>
       </el-form-item>
-      <el-form-item label="排序:" prop="sort">
+      <el-form-item label="Rank:" prop="sort">
         <el-input v-model.number="brand.sort"></el-input>
       </el-form-item>
-      <el-form-item label="是否显示:">
+      <el-form-item label="Show Status:">
         <el-radio-group v-model="brand.showStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="品牌制造商:">
+      <el-form-item label="Manufacturer:">
         <el-radio-group v-model="brand.factoryStatus">
           <el-radio :label="1">是</el-radio>
           <el-radio :label="0">否</el-radio>
@@ -69,14 +69,14 @@
         brand:Object.assign({}, defaultBrand),
         rules: {
           name: [
-            {required: true, message: '请输入品牌名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+            {required: true, message: 'Please enter the brand name!', trigger: 'blur'},
+            {min: 2, max: 140, message: 'Length should be between 2 to 140 characters', trigger: 'blur'}
           ],
           logo: [
-            {required: true, message: '请输入品牌logo', trigger: 'blur'}
+            {required: true, message: 'Please upload a brand LOGO', trigger: 'blur'}
           ],
           sort: [
-            {type: 'number', message: '排序必须为数字'}
+            {type: 'number', message: 'The rank must be a valid number!'}
           ],
         }
       }
@@ -94,7 +94,7 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', 'Confirm', {
+            this.$confirm('Confirm submission?', 'Confirm', {
               confirmButtonText: 'Confirm',
               cancelButtonText: 'Cancel',
               type: 'warning'
@@ -114,7 +114,7 @@
                   this.$refs[formName].resetFields();
                   this.brand = Object.assign({},defaultBrand);
                   this.$message({
-                    message: '提交Success',
+                    message: 'Success',
                     type: 'success',
                     duration:1000
                   });
@@ -124,7 +124,7 @@
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: 'Network error',
               type: 'error',
               duration:1000
             });

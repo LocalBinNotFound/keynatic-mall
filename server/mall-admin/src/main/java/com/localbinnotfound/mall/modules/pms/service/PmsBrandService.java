@@ -1,5 +1,6 @@
 package com.localbinnotfound.mall.modules.pms.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.localbinnotfound.mall.modules.pms.model.PmsBrand;
 
@@ -13,4 +14,5 @@ import com.localbinnotfound.mall.modules.pms.model.PmsBrand;
  */
 public interface PmsBrandService extends IService<PmsBrand> {
 
+    Page list(Integer pageNum, Integer pageSize);
 }
