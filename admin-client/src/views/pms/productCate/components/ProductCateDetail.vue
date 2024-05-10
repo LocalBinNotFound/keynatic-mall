@@ -117,23 +117,23 @@
           this.productCate = response.data;
         });
         // 获取 当前分类保存的筛选属性关联数据
-        getProductAttrInfo(this.$route.query.id).then(response => {
-          if (response.data != null && response.data.length > 0) {
-            this.filterProductAttrList = [];
-            for (let i = 0; i < response.data.length; i++) {
-              this.filterProductAttrList.push({
-                key: Date.now() + i,
-                value: [response.data[i].attributeCategoryId, response.data[i].attributeId]
-              })
-            }
-          }
-        });
+        // getProductAttrInfo(this.$route.query.id).then(response => {
+        //   if (response.data != null && response.data.length > 0) {
+        //     this.filterProductAttrList = [];
+        //     for (let i = 0; i < response.data.length; i++) {
+        //       this.filterProductAttrList.push({
+        //         key: Date.now() + i,
+        //         value: [response.data[i].attributeCategoryId, response.data[i].attributeId]
+        //       })
+        //     }
+        //   }
+        // });
       } else {
         this.productCate = Object.assign({}, defaultProductCate);
       }
       this.getSelectProductCateList();
       // 初始化筛选属性级联数据
-      this.getProductAttrCateList();
+      //this.getProductAttrCateList();
     },
     methods: {
       getSelectProductCateList() {
@@ -196,7 +196,7 @@
                 });
               } else {
 
-                this.productCate.productAttributeIdList = this.getProductAttributeIdList();
+                //this.productCate.productAttributeIdList = this.getProductAttributeIdList();
                 createProductCate(this.productCate).then(response => {
                   this.$refs[formName].resetFields();
                   this.resetForm(formName);

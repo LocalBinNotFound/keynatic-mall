@@ -8,6 +8,7 @@ import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,6 +73,40 @@ public class PmsProductCategoryController {
     @RequestMapping(value="/delete/{id}", method = RequestMethod.POST)
     public CommonResult delete(@PathVariable Long id) {
         boolean result = productCategoryService.removeById(id);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    /**
+     *     url:'/productCategory/create',
+     *     method:'post',
+     *     data:data
+     */
+    @RequestMapping(value="/create", method = RequestMethod.POST)
+    public CommonResult create(@RequestBody PmsProductCategory productCategory) {
+        boolean result = productCategoryService.save(productCategory);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    /**
+     *     url:'/productCategory/'+id,
+     *     method:'get',
+     */
+    @RequestMapping(value="{id}", method = RequestMethod.GET)
+    public CommonResult<PmsProductCategory> getById(@PathVariable Long id) {
+        PmsProductCategory productCategory = productCategoryService.getById(id);
+        return CommonResult.success(productCategory);
+    }
+
+    /**
+     *     url:'/productCategory/update/'+id,
+     *     method:'post',
+     *     data:data
+     */
+    @RequestMapping(value="update/{id}", method = RequestMethod.POST)
+    public CommonResult update(@RequestBody PmsProductCategory productCategory) {
+        boolean result = productCategoryService.updateById(productCategory);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
     }
