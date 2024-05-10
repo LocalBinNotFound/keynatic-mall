@@ -26,8 +26,8 @@ public class PmsProductAttributeCategoryController {
     PmsProductAttributeCategoryService attributeCategoryService;
 
     @RequestMapping(value="/list", method = RequestMethod.GET)
-    public CommonResult<CommonPage<PmsProductAttributeCategory>> getList(@RequestParam(value="pageNum", defaultValue="1") Integer pageNum,
-                                                                         @RequestParam(value="pageSize", defaultValue="5") Integer pageSize) {
+    public CommonResult getList(@RequestParam(value="pageNum", defaultValue="1") Integer pageNum,
+                                @RequestParam(value="pageSize", defaultValue="5") Integer pageSize) {
         Page page = attributeCategoryService.list(pageNum, pageSize);
 
         return CommonResult.success(CommonPage.restPage(page));

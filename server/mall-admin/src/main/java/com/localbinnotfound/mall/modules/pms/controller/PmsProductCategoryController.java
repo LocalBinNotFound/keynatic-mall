@@ -29,9 +29,9 @@ public class PmsProductCategoryController {
     PmsProductCategoryService productCategoryService;
 
     @RequestMapping(value="/list/{parentId}", method = RequestMethod.GET)
-    public CommonResult<CommonPage<PmsProductCategory>> getList(@PathVariable Long parentId,
-                                                                @RequestParam(value="pageNum", defaultValue="1") Integer pageNum,
-                                                                @RequestParam(value="pageSize", defaultValue="5") Integer pageSize) {
+    public CommonResult getList(@PathVariable Long parentId,
+                                @RequestParam(value="pageNum", defaultValue="1") Integer pageNum,
+                                @RequestParam(value="pageSize", defaultValue="5") Integer pageSize) {
         Page page = productCategoryService.list(parentId, pageNum, pageSize);
 
         return CommonResult.success(CommonPage.restPage(page));

@@ -136,12 +136,12 @@
       onSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$confirm('是否提交数据', 'Confirm', {
+            this.$confirm('Confirm submission?', 'Confirm', {
               confirmButtonText: 'Confirm',
               cancelButtonText: 'Cancel',
               type: 'warning'
             }).then(() => {
-              // 修改
+              // update
               if(this.isEdit){
                 updateProductAttr(this.$route.query.id,this.productAttr).then(response=>{
                   this.$message({
@@ -155,18 +155,19 @@
                 // Add
                 createProductAttr(this.productAttr).then(response=>{
                   this.$message({
-                    message: '提交Success',
+                    message: 'Success',
                     type: 'success',
                     duration: 1000
                   });
                   this.resetForm('productAttrFrom');
+                  this.$router.back();
                 });
               }
             });
 
           } else {
             this.$message({
-              message: '验证失败',
+              message: 'Network error',
               type: 'error',
               duration: 1000
             });

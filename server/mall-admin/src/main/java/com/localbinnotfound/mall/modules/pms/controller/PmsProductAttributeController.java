@@ -5,10 +5,14 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
+import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
+import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeValue;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -33,6 +37,33 @@ public class PmsProductAttributeController {
         Page page = productAttributeService.list(cid, pageNum, pageSize, type);
 
         return CommonResult.success(CommonPage.restPage(page));
+    }
+
+    @RequestMapping(value="/create", method = RequestMethod.POST)
+    public CommonResult create(@RequestBody PmsProductAttribute productAttribute) {
+        boolean result = productAttributeService.create(productAttribute);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    @RequestMapping(value="update/{id}", method = RequestMethod.POST)
+    public CommonResult update(@RequestBody PmsProductAttribute productAttribute) {
+        boolean result = productAttributeService.updateById(productAttribute);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
+    }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public CommonResult<PmsProductAttribute> getById(@PathVariable Long id) {
+        PmsProductAttribute productAttribute = productAttributeService.getById(id);
+        return CommonResult.success(productAttribute);
+    }
+
+    @RequestMapping(value="/delete", method = RequestMethod.POST)
+    public CommonResult delete(@RequestParam("ids") List<Long> ids) {
+        boolean result = productAttributeService.delete(ids);
+        if (result) return CommonResult.success(true);
+        else return CommonResult.failed();
     }
 }
 
