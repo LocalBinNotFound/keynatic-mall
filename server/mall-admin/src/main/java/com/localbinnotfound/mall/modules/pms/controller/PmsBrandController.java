@@ -74,7 +74,7 @@ public class PmsBrandController {
         else return CommonResult.failed();
     }
 
-    @RequestMapping(value="{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public CommonResult getById(@PathVariable Long id) {
         PmsBrand brand = brandService.getById(id);
         return CommonResult.success(brand);

@@ -44,7 +44,7 @@ public class PmsProductAttributeController {
         return CommonResult.failed();
     }
 
-    @RequestMapping(value="update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value="/update/{id}", method = RequestMethod.POST)
     public CommonResult update(@RequestBody PmsProductAttribute productAttribute) {
         boolean result = productAttributeService.updateById(productAttribute);
         if (result) return CommonResult.success(true);

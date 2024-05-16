@@ -4,15 +4,24 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.localbinnotfound.mall.modules.pms.model.PmsMemberPrice;
 import com.localbinnotfound.mall.modules.pms.model.PmsProduct;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductMapper;
+import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeValue;
 import com.localbinnotfound.mall.modules.pms.model.dto.ProductConditionDTO;
-import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductSaveParamsDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductUpdateInitDTO;
+import com.localbinnotfound.mall.modules.pms.service.*;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
@@ -25,6 +34,24 @@ import java.util.List;
  */
 @Service
 public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProduct> implements PmsProductService {
+
+    @Autowired
+    PmsProductMapper productMapper;
+
+    @Autowired
+    PmsMemberPriceService memberPriceService;
+
+    @Autowired
+    PmsProductLadderService productLadderService;
+
+    @Autowired
+    PmsProductFullReductionService fullReductionService;
+
+    @Autowired
+    PmsSkuStockService skuStockService;
+
+    @Autowired
+    PmsProductAttributeValueService attributeValueService;
 
     @Override
     public Page list(ProductConditionDTO conditionDTO) {
@@ -56,6 +83,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
             lambdaWrapper.like(PmsProduct::getVerifyStatus, conditionDTO.getVerifyStatus());
         }
 
+        lambdaWrapper.orderByAsc(PmsProduct::getSort);
         return this.page(page, lambdaWrapper);
     }
 
@@ -67,5 +95,43 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
                 .in(PmsProduct::getId, ids);
 
         return this.update(updateWrapper);
+    }
+
+    @Override
+    @Transactional
+    public boolean create(ProductSaveParamsDTO productSaveParamsDTO) {
+        PmsProduct product = productSaveParamsDTO;
+        product.setId(null);
+        boolean result = this.save(product);
+
+        if (result) {
+            SaveList(productSaveParamsDTO.getMemberPriceList(), product.getId(), memberPriceService);
+            SaveList(productSaveParamsDTO.getProductLadderList(), product.getId(), productLadderService);
+            SaveList(productSaveParamsDTO.getAttributeValueList(), product.getId(), attributeValueService);
+            SaveList(productSaveParamsDTO.getSkuStockList(), product.getId(), skuStockService);
+            SaveList(productSaveParamsDTO.getProductFullReductionList(), product.getId(), fullReductionService);
+        }
+
+        return result;
+    }
+
+    @Override
+    public ProductUpdateInitDTO getUpdateInfo(Long id) {
+        return productMapper.getUpdateInfo(id);
+    }
+
+    public void SaveList(List list, Long productId, IService service) {
+        if (CollectionUtils.isEmpty(list)) return;
+
+        try {
+            for (Object obj : list) {
+                Method setProductIdMethod = obj.getClass().getMethod("setProductId", Long.class);
+
+                setProductIdMethod.invoke(obj, productId);
+            }
+            service.saveBatch(list);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

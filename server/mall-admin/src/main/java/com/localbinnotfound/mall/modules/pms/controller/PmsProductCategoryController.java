@@ -104,7 +104,7 @@ public class PmsProductCategoryController {
      *     method:'post',
      *     data:data
      */
-    @RequestMapping(value="update/{id}", method = RequestMethod.POST)
+    @RequestMapping(value="/update/{id}", method = RequestMethod.POST)
     public CommonResult update(@RequestBody ProductCategoryDTO productCategoryDTO) {
         boolean result = productCategoryService.update(productCategoryDTO);
         if (result) return CommonResult.success(true);

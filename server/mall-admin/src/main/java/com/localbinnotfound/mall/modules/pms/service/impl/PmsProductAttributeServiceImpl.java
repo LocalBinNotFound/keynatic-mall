@@ -42,7 +42,8 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
 
         wrapper.lambda()
                 .eq(PmsProductAttribute::getProductAttributeCategoryId, cid)
-                .eq(PmsProductAttribute::getType, type);
+                .eq(PmsProductAttribute::getType, type)
+                .orderByAsc(PmsProductAttribute::getSort);
 
         return this.page(page, wrapper);
     }

@@ -1,9 +1,9 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <el-steps :active="active" finish-status="success" align-center>
-      <el-step title="填写商品信息"></el-step>
-      <el-step title="填写商品促销"></el-step>
-      <el-step title="填写商品属性"></el-step>
+      <el-step title="Product Information"></el-step>
+      <el-step title="Product Sales"></el-step>
+      <el-step title="Product Properties"></el-step>
       <!-- <el-step title="选择商品关联"></el-step> -->
     </el-steps>
     <product-info-detail
@@ -148,7 +148,7 @@
         }
       },
       finishCommit(isEdit) {
-        this.$confirm('是否要提交该产品', 'Confirm', {
+        this.$confirm('Confirm adding product?', 'Confirm', {
           confirmButtonText: 'Confirm',
           cancelButtonText: 'Cancel',
           type: 'warning'
@@ -157,7 +157,7 @@
             updateProduct(this.$route.query.id,this.productParam).then(response=>{
               this.$message({
                 type: 'success',
-                message: '提交Success',
+                message: 'Success',
                 duration:1000
               });
               this.$router.back();
@@ -166,7 +166,7 @@
             createProduct(this.productParam).then(response=>{
               this.$message({
                 type: 'success',
-                message: '提交Success',
+                message: 'Success',
                 duration:1000
               });
               location.reload();

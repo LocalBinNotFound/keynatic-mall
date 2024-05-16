@@ -8,6 +8,8 @@ import com.localbinnotfound.mall.modules.pms.model.PmsProduct;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
 import com.localbinnotfound.mall.modules.pms.model.dto.ProductConditionDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductSaveParamsDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductUpdateInitDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsBrandService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
 import io.swagger.annotations.ApiOperation;
@@ -38,8 +40,8 @@ public class PmsProductController {
     }
 
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    public CommonResult create(@RequestBody PmsProduct product) {
-        boolean result = productService.save(product);
+    public CommonResult create(@RequestBody ProductSaveParamsDTO productSaveParamsDTO) {
+        boolean result = productService.create(productSaveParamsDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
     }
@@ -51,7 +53,7 @@ public class PmsProductController {
         else return CommonResult.failed();
     }
 
-    @RequestMapping(value = "update/newStatus", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/newStatus", method = RequestMethod.POST)
     public CommonResult updateNewStatus(@RequestParam(value="ids", defaultValue = "1") List<Long> ids,
                                          @RequestParam(value="newStatus") Integer newStatus) {
         boolean result = productService.updateStatus(newStatus, ids, PmsProduct::getNewStatus);
@@ -60,7 +62,7 @@ public class PmsProductController {
         else return CommonResult.failed();
     }
 
-    @RequestMapping(value = "update/recommendStatus", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
     public CommonResult updateRecommendStatus(@RequestParam(value="ids", defaultValue = "1") List<Long> ids,
                                         @RequestParam(value="recommendStatus") Integer recommendStatus) {
         boolean result = productService.updateStatus(recommendStatus, ids, PmsProduct::getRecommandStatus);
@@ -69,13 +71,19 @@ public class PmsProductController {
         else return CommonResult.failed();
     }
 
-    @RequestMapping(value = "update/publishStatus", method = RequestMethod.POST)
+    @RequestMapping(value = "/update/publishStatus", method = RequestMethod.POST)
     public CommonResult updatePublishStatus(@RequestParam(value="ids", defaultValue = "1") List<Long> ids,
                                         @RequestParam(value="publishStatus") Integer publishStatus) {
         boolean result = productService.updateStatus(publishStatus, ids, PmsProduct::getPublishStatus);
 
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
+    }
+
+    @RequestMapping(value = "/updateInfo/{id}", method = RequestMethod.GET)
+    public CommonResult getUpdateInfo(@PathVariable Long id) {
+        ProductUpdateInitDTO updateInitDTO = productService.getUpdateInfo(id);
+        return CommonResult.success(updateInitDTO);
     }
 }
 
