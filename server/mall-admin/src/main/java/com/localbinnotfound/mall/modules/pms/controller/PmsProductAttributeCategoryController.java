@@ -6,9 +6,12 @@ import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductAttributeCateDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -52,6 +55,18 @@ public class PmsProductAttributeCategoryController {
         boolean result = attributeCategoryService.removeById(id);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
+    }
+
+    /**
+     *   return request({
+     *     url:'/productAttribute/category/list/withAttr',
+     *     method:'get'
+     *   })
+     */
+    @RequestMapping(value="list/withAttr", method = RequestMethod.GET)
+    public CommonResult getListWithAttr() {
+        List<ProductAttributeCateDTO> list = attributeCategoryService.getListWithAttr();
+        return CommonResult.success(list);
     }
 }
 

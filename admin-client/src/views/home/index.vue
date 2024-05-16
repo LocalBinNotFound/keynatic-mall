@@ -7,21 +7,21 @@
           <div class="total-frame">
             <img :src="img_home_order" class="total-icon">
             <div class="total-title">Orders Today</div>
-            <div class="total-value">195</div>
+            <div class="total-value">38</div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="total-frame">
             <img :src="img_home_today_amount" class="total-icon">
             <div class="total-title">Sales Today</div>
-            <div class="total-value">$3999.98</div>
+            <div class="total-value">$599.98</div>
           </div>
         </el-col>
         <el-col :span="6">
           <div class="total-frame">
             <img :src="img_home_yesterday_amount" class="total-icon">
             <div class="total-title">Sales Yesterday</div>
-            <div class="total-value">$4999.99</div>
+            <div class="total-value">$825.99</div>
           </div>
         </el-col>
         <el-col :span="6">
@@ -29,7 +29,7 @@
             <svg-icon icon-class="total-week" class="total-icon">
             </svg-icon>
             <div class="total-title">Sales Past Week</div>
-            <div class="total-value">$50000.00</div>
+            <div class="total-value">$3856.48</div>
           </div>
         </el-col>
       </el-row>
@@ -41,19 +41,19 @@
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Order Pending Payment</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(3)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Order Completed</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(2)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Order Pending Confirm Delivery</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(5)</span>
             </div>
           </el-col>
         </el-row>
@@ -61,19 +61,19 @@
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Order Pending Shipment</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(6)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Item Out of Stock</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(15)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Pending Return Applications</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(2)</span>
             </div>
           </el-col>
         </el-row>
@@ -81,19 +81,19 @@
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Order Shipped</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(5)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Pending Return Order</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(3)</span>
             </div>
           </el-col>
           <el-col :span="8">
             <div class="un-handle-item">
               <span class="font-medium">Ads near Expiration</span>
-              <span style="float: right" class="color-danger">(10)</span>
+              <span style="float: right" class="color-danger">(1)</span>
             </div>
           </el-col>
         </el-row>
@@ -106,10 +106,10 @@
             <div class="layout-title">Product Overview</div>
             <div style="padding: 40px">
               <el-row>
-                <el-col :span="6" class="color-danger overview-item-value">100</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">400</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">50</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">500</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">30</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">55</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">3</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">88</el-col>
               </el-row>
               <el-row class="font-medium">
                 <el-col :span="6" class="overview-item-title">Unlisted</el-col>
@@ -125,10 +125,10 @@
             <div class="layout-title">User Overview</div>
             <div style="padding: 40px">
               <el-row>
-                <el-col :span="6" class="color-danger overview-item-value">100</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">200</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">1000</el-col>
-                <el-col :span="6" class="color-danger overview-item-value">5000</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">5</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">3</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">30</el-col>
+                <el-col :span="6" class="color-danger overview-item-value">88</el-col>
               </el-row>
               <el-row class="font-medium">
                 <el-col :span="6" class="overview-item-title">New Today</el-col>
@@ -148,7 +148,7 @@
           <div style="padding: 20px">
             <div>
               <div style="color: #909399;font-size: 14px">Total Orders This Month</div>
-              <div style="color: #606266;font-size: 24px;padding: 10px 0">10000</div>
+              <div style="color: #606266;font-size: 24px;padding: 10px 0">58</div>
               <div>
                 <span class="color-success" style="font-size: 14px">+10%</span>
                 <span style="color: #C0C4CC;font-size: 14px">Comparing to Last Month</span>
@@ -218,21 +218,21 @@
   const DATA_FROM_BACKEND = {
     columns: ['date', 'orderCount','orderAmount'],
     rows: [
-      {date: '2018-11-01', orderCount: 10, orderAmount: 1093},
-      {date: '2018-11-02', orderCount: 20, orderAmount: 2230},
-      {date: '2018-11-03', orderCount: 33, orderAmount: 3623},
-      {date: '2018-11-04', orderCount: 50, orderAmount: 6423},
-      {date: '2018-11-05', orderCount: 80, orderAmount: 8492},
-      {date: '2018-11-06', orderCount: 60, orderAmount: 6293},
-      {date: '2018-11-07', orderCount: 20, orderAmount: 2293},
-      {date: '2018-11-08', orderCount: 60, orderAmount: 6293},
-      {date: '2018-11-09', orderCount: 50, orderAmount: 5293},
-      {date: '2018-11-10', orderCount: 30, orderAmount: 3293},
-      {date: '2018-11-11', orderCount: 20, orderAmount: 2293},
-      {date: '2018-11-12', orderCount: 80, orderAmount: 8293},
-      {date: '2018-11-13', orderCount: 100, orderAmount: 10293},
-      {date: '2018-11-14', orderCount: 10, orderAmount: 1293},
-      {date: '2018-11-15', orderCount: 40, orderAmount: 4293}
+      {date: '2024-04-01', orderCount: 10, orderAmount: 1093},
+      {date: '2024-04-02', orderCount: 20, orderAmount: 2230},
+      {date: '2024-04-03', orderCount: 33, orderAmount: 3623},
+      {date: '2024-04-04', orderCount: 50, orderAmount: 6423},
+      {date: '2024-04-05', orderCount: 80, orderAmount: 8492},
+      {date: '2024-04-06', orderCount: 60, orderAmount: 6293},
+      {date: '2024-04-07', orderCount: 20, orderAmount: 2293},
+      {date: '2024-04-08', orderCount: 60, orderAmount: 6293},
+      {date: '2024-04-09', orderCount: 50, orderAmount: 5293},
+      {date: '2024-04-10', orderCount: 30, orderAmount: 3293},
+      {date: '2024-04-11', orderCount: 20, orderAmount: 2293},
+      {date: '2024-04-12', orderCount: 80, orderAmount: 8293},
+      {date: '2024-04-13', orderCount: 100, orderAmount: 10293},
+      {date: '2024-04-14', orderCount: 10, orderAmount: 1293},
+      {date: '2024-04-15', orderCount: 40, orderAmount: 4293}
     ]
   };
   export default {
@@ -245,19 +245,19 @@
             onClick(picker) {
               const end = new Date();
               let start = new Date();
-              start.setFullYear(2018);
-              start.setMonth(10);
+              start.setFullYear(2024);
+              start.setMonth(4);
               start.setDate(1);
               end.setTime(start.getTime() + 3600 * 1000 * 24 * 7);
-              picker.$emit('pick', [start, end]);
+              pnpicker.$emit('pick', [start, end]);
             }
           }, {
             text: 'Past Month',
             onClick(picker) {
               const end = new Date();
               let start = new Date();
-              start.setFullYear(2018);
-              start.setMonth(10);
+              start.setFullYear(2024);
+              start.setMonth(4);
               start.setDate(1);
               end.setTime(start.getTime() + 3600 * 1000 * 24 * 30);
               picker.$emit('pick', [start, end]);
@@ -291,8 +291,8 @@
       },
       initOrderCountDate(){
         let start = new Date();
-        start.setFullYear(2018);
-        start.setMonth(10);
+        start.setFullYear(2024);
+        start.setMonth(4);
         start.setDate(1);
         const end = new Date();
         end.setTime(start.getTime() + 1000 * 60 * 60 * 24 * 7);

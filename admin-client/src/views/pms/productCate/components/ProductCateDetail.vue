@@ -110,9 +110,8 @@
         }]
       }
     },
-    created() {   // 声明周期
+    created() {
       if (this.isEdit) {
-        // 初始化修改数据
         getProductCate(this.$route.query.id).then(response => {
           this.productCate = response.data;
         });
@@ -132,12 +131,10 @@
         this.productCate = Object.assign({}, defaultProductCate);
       }
       this.getSelectProductCateList();
-      // 初始化筛选属性级联数据
-      //this.getProductAttrCateList();
+      this.getProductAttrCateList();
     },
     methods: {
       getSelectProductCateList() {
-        // parentiId=0 只筛选一级分类
         fetchList(0, {pageSize: 100, pageNum: 1}).then(response => {
           this.selectProductCateList = response.data.list;
           this.selectProductCateList.unshift({id: 0, name: 'NO PARENT CATEGORY'});
@@ -146,12 +143,10 @@
       getProductAttrCateList() {
         fetchListWithAttr().then(response => {
           let list = response.data;//list<dto>
-          // 循环
           for (let i = 0; i < list.length; i++) {
             let productAttrCate = list[i];  // dto
             let children = [];
             if (productAttrCate.productAttributeList != null && productAttrCate.productAttributeList.length > 0) {
-              // 循环商品属性list
               for (let j = 0; j < productAttrCate.productAttributeList.length; j++) {
                 children.push({
                   label: productAttrCate.productAttributeList[j].name,
@@ -164,12 +159,10 @@
         });
       },
       getProductAttributeIdList() {
-        //获取选中的筛选商品属性
         let productAttributeIdList = [];
         for (let i = 0; i < this.filterProductAttrList.length; i++) {
           let item = this.filterProductAttrList[i];
           if (item.value !== null && item.value.length === 2) {
-            // 拿到商品属性
             productAttributeIdList.push(item.value[1]);
           }
         }
@@ -183,8 +176,8 @@
               cancelButtonText: 'Cancel',
               type: 'warning'
             }).then(() => {
-              // 修改
               if (this.isEdit) {
+                //edit
                 this.productCate.productAttributeIdList = this.getProductAttributeIdList();
                 updateProductCate(this.$route.query.id, this.productCate).then(response => {
                   this.$message({
@@ -195,8 +188,8 @@
                   this.$router.back();
                 });
               } else {
-
-                //this.productCate.productAttributeIdList = this.getProductAttributeIdList();
+                //add
+                this.productCate.productAttributeIdList = this.getProductAttributeIdList();
                 createProductCate(this.productCate).then(response => {
                   this.$refs[formName].resetFields();
                   this.resetForm(formName);
@@ -230,7 +223,7 @@
       removeFilterAttr(productAttributeId) {
         if (this.filterProductAttrList.length === 1) {
           this.$message({
-            message: '至少要留一个',
+            message: 'You need to have at least 1 property',
             type: 'warning',
             duration: 1000
           });
@@ -244,7 +237,7 @@
       handleAddFilterAttr() {
         if (this.filterProductAttrList.length === 3) {
           this.$message({
-            message: '最多Add三个',
+            message: 'You can add at most 3 properties',
             type: 'warning',
             duration: 1000
           });

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.localbinnotfound.mall.modules.pms.mapper.PmsProductAttributeCategoryMapper">
 
-    <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory">
         <id column="id" property="id" />
         <result column="name" property="name" />
@@ -10,4 +9,21 @@
         <result column="param_count" property="paramCount" />
     </resultMap>
 
+    <resultMap id="ListWithAttrMap" type="com.localbinnotfound.mall.modules.pms.model.dto.ProductAttributeCateDTO">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <collection property="productAttributeList" columnPrefix="attr_"
+                    resultMap="com.localbinnotfound.mall.modules.pms.mapper.PmsProductAttributeMapper.BaseResultMap"/>
+    </resultMap>
+
+    <select id="getListWithAttr" resultMap="ListWithAttrMap">
+        SELECT
+            pac.id,
+            pac.`name`,
+            pa.id attr_id,
+            pa.`name` attr_name
+        FROM
+            pms_product_attribute_category pac
+                LEFT JOIN pms_product_attribute pa ON pac.id=pa.product_attribute_category_id AND pa.type=1
+    </select>
 </mapper>

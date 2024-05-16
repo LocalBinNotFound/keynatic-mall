@@ -2,6 +2,9 @@ package com.localbinnotfound.mall.modules.pms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductAttributeCateDTO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
  */
 public interface PmsProductAttributeCategoryMapper extends BaseMapper<PmsProductAttributeCategory> {
 
+    List<ProductAttributeCateDTO> getListWithAttr();
 }
