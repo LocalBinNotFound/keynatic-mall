@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductCategoryMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategoryAttributeRelation;
-import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductCategoryDTO;
 import com.localbinnotfound.mall.modules.pms.model.dto.ProductCateChildrenDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryAttributeRelationService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
@@ -69,7 +69,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
 
     @Override
     @Transactional
-    public boolean saveAttrInfo(PmsProductCategoryDTO productCategoryDTO) {
+    public boolean saveAttrInfo(ProductCategoryDTO productCategoryDTO) {
         boolean isSavedI, isSavedII;
 
         PmsProductCategory productCategory = new PmsProductCategory();
@@ -88,7 +88,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
     }
 
     @Override
-    public boolean update(PmsProductCategoryDTO productCategoryDTO) {
+    public boolean update(ProductCategoryDTO productCategoryDTO) {
         PmsProductCategory productCategory = new PmsProductCategory();
         BeanUtils.copyProperties(productCategoryDTO, productCategory);
 
@@ -110,7 +110,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         return productCategoryMapper.getWithChildren();
     }
 
-    private boolean isSavedBatch(PmsProductCategoryDTO productCategoryDTO, PmsProductCategory productCategory) {
+    private boolean isSavedBatch(ProductCategoryDTO productCategoryDTO, PmsProductCategory productCategory) {
         List<PmsProductCategoryAttributeRelation> list = new ArrayList<>();
         for (Long attrId : productCategoryDTO.getProductAttributeIdList()) {
             PmsProductCategoryAttributeRelation productCategoryAttributeRelation = new PmsProductCategoryAttributeRelation();

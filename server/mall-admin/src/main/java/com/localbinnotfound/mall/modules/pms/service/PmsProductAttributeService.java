@@ -3,7 +3,7 @@ package com.localbinnotfound.mall.modules.pms.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
-import com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.AttrInfoDTO;
 
 import java.util.List;
 
@@ -23,5 +23,5 @@ public interface PmsProductAttributeService extends IService<PmsProductAttribute
 
     boolean delete(List<Long> ids);
 
-    List<PmsAttrInfoDTO> getAttrInfoByCid(Long cId);
+    List<AttrInfoDTO> getAttrInfoByCid(Long cId);
 }

@@ -23,7 +23,7 @@
           <el-form-item label="Search">
             <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="product name"></el-input>
           </el-form-item>
-          <el-form-item label="Product SKU:">
+          <el-form-item label="Product Serial No:">
             <el-input style="width: 203px" v-model="listQuery.productSn" placeholder="SKU"></el-input>
           </el-form-item>
           <el-form-item label="Product Category:">

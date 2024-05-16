@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
-import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductCategoryDTO;
 import com.localbinnotfound.mall.modules.pms.model.dto.ProductCateChildrenDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +83,7 @@ public class PmsProductCategoryController {
      *     data:data
      */
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    public CommonResult create(@RequestBody PmsProductCategoryDTO productCategoryDTO) {
+    public CommonResult create(@RequestBody ProductCategoryDTO productCategoryDTO) {
         boolean result = productCategoryService.saveAttrInfo(productCategoryDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
@@ -105,7 +105,7 @@ public class PmsProductCategoryController {
      *     data:data
      */
     @RequestMapping(value="update/{id}", method = RequestMethod.POST)
-    public CommonResult update(@RequestBody PmsProductCategoryDTO productCategoryDTO) {
+    public CommonResult update(@RequestBody ProductCategoryDTO productCategoryDTO) {
         boolean result = productCategoryService.update(productCategoryDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();

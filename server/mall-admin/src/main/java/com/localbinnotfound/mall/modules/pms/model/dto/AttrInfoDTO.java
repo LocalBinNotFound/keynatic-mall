@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="PmsProductAttributeInfoDTO", description = "used to retrieve saved attribute info from backend")
-public class PmsAttrInfoDTO {
+public class AttrInfoDTO {
     private Long attributeCategoryId;
     private Long attributeId;
 }

@@ -18,7 +18,7 @@
         <result column="type" property="type" />
     </resultMap>
 
-    <resultMap id="AttrInfoByCidMap" type="com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO">
+    <resultMap id="AttrInfoByCidMap" type="com.localbinnotfound.mall.modules.pms.model.dto.AttrInfoDTO">
         <result column="product_attribute_id" property="attributeId"/>
         <result column="product_attribute_category_id" property="attributeCategoryId" />
     </resultMap>

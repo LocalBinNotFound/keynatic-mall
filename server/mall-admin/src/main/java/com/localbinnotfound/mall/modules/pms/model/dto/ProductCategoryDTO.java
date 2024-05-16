@@ -10,6 +10,6 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @ApiModel(value="PmsProductCategoryObjectDTO", description = "used to add or modify product category")
-public class PmsProductCategoryDTO extends PmsProductCategory {
+public class ProductCategoryDTO extends PmsProductCategory {
     private List<Long> productAttributeIdList;
 }

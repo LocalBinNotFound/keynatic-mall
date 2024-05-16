@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.*;
-import com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.AttrInfoDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,7 +66,7 @@ public class PmsProductAttributeController {
 
     @RequestMapping(value="/attrInfo/{cId}", method = RequestMethod.GET)
     public CommonResult getAttrInfoByCid(@PathVariable Long cId) {
-        List<PmsAttrInfoDTO> list = productAttributeService.getAttrInfoByCid(cId);
+        List<AttrInfoDTO> list = productAttributeService.getAttrInfoByCid(cId);
         return CommonResult.success(list);
     }
 }

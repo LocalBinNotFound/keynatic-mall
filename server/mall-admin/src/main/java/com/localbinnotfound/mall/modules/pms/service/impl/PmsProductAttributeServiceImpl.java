@@ -1,6 +1,5 @@
 package com.localbinnotfound.mall.modules.pms.service.impl;
 
-import com.amazonaws.internal.ConnectionUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
@@ -9,16 +8,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductAttributeMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
-import com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.AttrInfoDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeCategoryService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Transient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -90,7 +86,7 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
     }
 
     @Override
-    public List<PmsAttrInfoDTO> getAttrInfoByCid(Long cId) {
+    public List<AttrInfoDTO> getAttrInfoByCid(Long cId) {
         return productAttributeMapper.getAttrInfoByCid(cId);
     }
 }
