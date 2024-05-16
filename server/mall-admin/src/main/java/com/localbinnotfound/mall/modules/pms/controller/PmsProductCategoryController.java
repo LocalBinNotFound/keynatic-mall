@@ -7,9 +7,7 @@ import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
-import com.localbinnotfound.mall.modules.pms.service.PmsProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -85,7 +83,7 @@ public class PmsProductCategoryController {
      */
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public CommonResult create(@RequestBody PmsProductCategoryDTO productCategoryDTO) {
-        boolean result = productCategoryService.customSave(productCategoryDTO);
+        boolean result = productCategoryService.saveAttrInfo(productCategoryDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
     }
@@ -106,8 +104,8 @@ public class PmsProductCategoryController {
      *     data:data
      */
     @RequestMapping(value="update/{id}", method = RequestMethod.POST)
-    public CommonResult update(@RequestBody PmsProductCategory productCategory) {
-        boolean result = productCategoryService.updateById(productCategory);
+    public CommonResult update(@RequestBody PmsProductCategoryDTO productCategoryDTO) {
+        boolean result = productCategoryService.update(productCategoryDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
     }

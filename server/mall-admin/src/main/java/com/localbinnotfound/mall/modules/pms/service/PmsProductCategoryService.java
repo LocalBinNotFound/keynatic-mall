@@ -28,5 +28,7 @@ public interface PmsProductCategoryService extends IService<PmsProductCategory> 
 
     boolean updateShowStatus(List<Long> ids, Integer showStatus);
 
-    boolean customSave(PmsProductCategoryDTO productCategoryDTO);
+    boolean saveAttrInfo(PmsProductCategoryDTO productCategoryDTO);
+
+    boolean update(PmsProductCategoryDTO productCategoryDTO);
 }

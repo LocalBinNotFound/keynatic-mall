@@ -65,7 +65,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
 
     @Override
     @Transactional
-    public boolean customSave(PmsProductCategoryDTO productCategoryDTO) {
+    public boolean saveAttrInfo(PmsProductCategoryDTO productCategoryDTO) {
         boolean isSavedI, isSavedII;
 
         PmsProductCategory productCategory = new PmsProductCategory();
@@ -78,6 +78,30 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
 
         isSavedI = this.save(productCategory);
 
+        isSavedII = isSavedBatch(productCategoryDTO, productCategory);
+
+        return isSavedI && isSavedII;
+    }
+
+    @Override
+    public boolean update(PmsProductCategoryDTO productCategoryDTO) {
+        PmsProductCategory productCategory = new PmsProductCategory();
+        BeanUtils.copyProperties(productCategoryDTO, productCategory);
+
+        if (productCategory.getParentId() == 0) productCategory.setLevel(0);
+        else productCategory.setLevel(1);
+
+        this.updateById(productCategory);
+
+        QueryWrapper<PmsProductCategoryAttributeRelation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(PmsProductCategoryAttributeRelation::getProductCategoryId, productCategory.getId());
+        relationService.remove(queryWrapper);
+
+        isSavedBatch(productCategoryDTO, productCategory);
+        return true;
+    }
+
+    private boolean isSavedBatch(PmsProductCategoryDTO productCategoryDTO, PmsProductCategory productCategory) {
         List<PmsProductCategoryAttributeRelation> list = new ArrayList<>();
         for (Long attrId : productCategoryDTO.getProductAttributeIdList()) {
             PmsProductCategoryAttributeRelation productCategoryAttributeRelation = new PmsProductCategoryAttributeRelation();
@@ -86,8 +110,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
             list.add(productCategoryAttributeRelation);
         }
 
-        isSavedII = relationService.saveBatch(list);
-        return isSavedI && isSavedII;
+        return relationService.saveBatch(list);
     }
 
 
