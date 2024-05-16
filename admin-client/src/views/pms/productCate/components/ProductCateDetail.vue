@@ -115,18 +115,18 @@
         getProductCate(this.$route.query.id).then(response => {
           this.productCate = response.data;
         });
-        // 获取 当前分类保存的筛选属性关联数据
-        // getProductAttrInfo(this.$route.query.id).then(response => {
-        //   if (response.data != null && response.data.length > 0) {
-        //     this.filterProductAttrList = [];
-        //     for (let i = 0; i < response.data.length; i++) {
-        //       this.filterProductAttrList.push({
-        //         key: Date.now() + i,
-        //         value: [response.data[i].attributeCategoryId, response.data[i].attributeId]
-        //       })
-        //     }
-        //   }
-        // });
+        getProductAttrInfo(this.$route.query.id).then(response => {
+          if (response.data != null && response.data.length > 0) {
+            this.filterProductAttrList = [];
+            console.log(response.data);
+            for (let i = 0; i < response.data.length; i++) {
+              this.filterProductAttrList.push({
+                key: Date.now() + i,
+                value: [response.data[i].attributeCategoryId, response.data[i].attributeId]
+              })
+            }
+          }
+        });
       } else {
         this.productCate = Object.assign({}, defaultProductCate);
       }

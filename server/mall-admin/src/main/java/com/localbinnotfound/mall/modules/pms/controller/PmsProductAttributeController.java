@@ -4,10 +4,8 @@ package com.localbinnotfound.mall.modules.pms.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
-import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
-import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
-import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeValue;
-import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
+import com.localbinnotfound.mall.modules.pms.model.*;
+import com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +62,12 @@ public class PmsProductAttributeController {
         boolean result = productAttributeService.delete(ids);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
+    }
+
+    @RequestMapping(value="/attrInfo/{cId}", method = RequestMethod.GET)
+    public CommonResult getAttrInfoByCid(@PathVariable Long cId) {
+        List<PmsAttrInfoDTO> list = productAttributeService.getAttrInfoByCid(cId);
+        return CommonResult.success(list);
     }
 }
 

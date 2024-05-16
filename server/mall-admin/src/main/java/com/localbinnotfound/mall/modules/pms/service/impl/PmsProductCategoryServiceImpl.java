@@ -64,7 +64,7 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
     }
 
     @Override
-    @Transactional(rollbackFor = {Exception.class})
+    @Transactional
     public boolean customSave(PmsProductCategoryDTO productCategoryDTO) {
         boolean isSavedI, isSavedII;
 
@@ -74,13 +74,12 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
         BeanUtils.copyProperties(productCategoryDTO, productCategory);
         productCategory.setProductCount(0);
         if (productCategory.getParentId() == 0) productCategory.setLevel(0);
-        else productCategory.setLevel((int) (productCategory.getParentId()+1));
+        else productCategory.setLevel(1);
 
         isSavedI = this.save(productCategory);
 
-        List<Long> productAttributeIdList = productCategoryDTO.getProductAttributeIdList();
         List<PmsProductCategoryAttributeRelation> list = new ArrayList<>();
-        for (Long attrId : productAttributeIdList) {
+        for (Long attrId : productCategoryDTO.getProductAttributeIdList()) {
             PmsProductCategoryAttributeRelation productCategoryAttributeRelation = new PmsProductCategoryAttributeRelation();
             productCategoryAttributeRelation.setProductCategoryId(productCategory.getId());
             productCategoryAttributeRelation.setProductAttributeId(attrId);

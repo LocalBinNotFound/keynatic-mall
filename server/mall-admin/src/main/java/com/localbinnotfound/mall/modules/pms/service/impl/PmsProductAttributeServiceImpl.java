@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductAttributeMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttribute;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductAttributeCategory;
+import com.localbinnotfound.mall.modules.pms.model.dto.PmsAttrInfoDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeCategoryService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductAttributeService;
 import lombok.AllArgsConstructor;
@@ -86,5 +87,10 @@ public class PmsProductAttributeServiceImpl extends ServiceImpl<PmsProductAttrib
             productAttributeCategoryService.update(updateWrapper);
         }
         return length > 0;
+    }
+
+    @Override
+    public List<PmsAttrInfoDTO> getAttrInfoByCid(Long cId) {
+        return productAttributeMapper.getAttrInfoByCid(cId);
     }
 }
