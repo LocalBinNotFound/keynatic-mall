@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -22,7 +23,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @TableName("pms_sku_stock")
-@ApiModel(value = "PmsSkuStock对象", description = "sku的库存")
+@ApiModel(value = "PmsSkuStock", description = "stock")
 public class PmsSkuStock implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,34 +33,35 @@ public class PmsSkuStock implements Serializable {
 
     private Long productId;
 
-    @ApiModelProperty("sku编码")
+    @ApiModelProperty("SKU code")
+    @NotBlank(message = "SKU cannot be empty")
     private String skuCode;
 
     private BigDecimal price;
 
-    @ApiModelProperty("库存")
+    @ApiModelProperty("Stock")
     private Integer stock;
 
-    @ApiModelProperty("预警库存")
+    @ApiModelProperty("low stock")
     private Integer lowStock;
 
-    @ApiModelProperty("销售属性1")
+    @ApiModelProperty("sales property 1")
     private String sp1;
 
     private String sp2;
 
     private String sp3;
 
-    @ApiModelProperty("展示图片")
+    @ApiModelProperty("display picture")
     private String pic;
 
-    @ApiModelProperty("销量")
+    @ApiModelProperty("sales")
     private Integer sale;
 
-    @ApiModelProperty("单品促销价格")
+    @ApiModelProperty("promotional price")
     private BigDecimal promotionPrice;
 
-    @ApiModelProperty("锁定库存")
+    @ApiModelProperty("lock stock")
     private Integer lockStock;
 
 

@@ -105,11 +105,20 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         boolean result = this.save(product);
 
         if (result) {
-            SaveList(productSaveParamsDTO.getMemberPriceList(), product.getId(), memberPriceService);
-            SaveList(productSaveParamsDTO.getProductLadderList(), product.getId(), productLadderService);
+
+            switch (product.getPromotionType()) {
+                case 2:
+                    SaveList(productSaveParamsDTO.getMemberPriceList(), product.getId(), memberPriceService);
+                    break;
+                case 3:
+                    SaveList(productSaveParamsDTO.getProductLadderList(), product.getId(), productLadderService);
+                    break;
+                case 4:
+                    SaveList(productSaveParamsDTO.getProductFullReductionList(), product.getId(), fullReductionService);
+                    break;
+            }
             SaveList(productSaveParamsDTO.getAttributeValueList(), product.getId(), attributeValueService);
             SaveList(productSaveParamsDTO.getSkuStockList(), product.getId(), skuStockService);
-            SaveList(productSaveParamsDTO.getProductFullReductionList(), product.getId(), fullReductionService);
         }
 
         return result;
@@ -120,6 +129,37 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         return productMapper.getUpdateInfo(id);
     }
 
+    @Override
+    public boolean update(ProductSaveParamsDTO productSaveParamsDTO) {
+        PmsProduct product = productSaveParamsDTO;
+        boolean result = this.updateById(product);
+
+        if (result) {
+
+            switch (product.getPromotionType()) {
+                case 2:
+                    DeleteListByProductId(product.getId(), memberPriceService);
+                    SaveList(productSaveParamsDTO.getMemberPriceList(), product.getId(), memberPriceService);
+                    break;
+                case 3:
+                    DeleteListByProductId(product.getId(), productLadderService);
+                    SaveList(productSaveParamsDTO.getProductLadderList(), product.getId(), productLadderService);
+                    break;
+                case 4:
+                    DeleteListByProductId(product.getId(), fullReductionService);
+                    SaveList(productSaveParamsDTO.getProductFullReductionList(), product.getId(), fullReductionService);
+                    break;
+            }
+            DeleteListByProductId(product.getId(), attributeValueService);
+            SaveList(productSaveParamsDTO.getAttributeValueList(), product.getId(), attributeValueService);
+
+            DeleteListByProductId(product.getId(), skuStockService);
+            SaveList(productSaveParamsDTO.getSkuStockList(), product.getId(), skuStockService);
+        }
+
+        return result;
+    }
+
     public void SaveList(List list, Long productId, IService service) {
         if (CollectionUtils.isEmpty(list)) return;
 
@@ -127,11 +167,20 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
             for (Object obj : list) {
                 Method setProductIdMethod = obj.getClass().getMethod("setProductId", Long.class);
 
+                Method setId = obj.getClass().getMethod("setId", Long.class);
+                setId.invoke(obj, (Long) null);
                 setProductIdMethod.invoke(obj, productId);
             }
             service.saveBatch(list);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void DeleteListByProductId(Long productId, IService service) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("product_id", productId);
+
+        service.remove(queryWrapper);
     }
 }

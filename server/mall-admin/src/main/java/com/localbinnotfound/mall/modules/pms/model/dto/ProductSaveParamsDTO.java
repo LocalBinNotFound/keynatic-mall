@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -15,6 +17,9 @@ public class ProductSaveParamsDTO extends PmsProduct {
     private List<PmsProductFullReduction> productFullReductionList;
     private List<PmsProductLadder> productLadderList;
     private List<PmsProductAttributeValue> attributeValueList;
+
+    @Size(min=1, message="At least one SKU number")
+    @Valid
     private List<PmsSkuStock> skuStockList;
 
 }
