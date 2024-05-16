@@ -18,4 +18,21 @@
         <result column="description" property="description" />
     </resultMap>
 
+    <resultMap id="WithChildrenMap" type="com.localbinnotfound.mall.modules.pms.model.dto.ProductCateChildrenDTO">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <collection property="children" columnPrefix="children_" resultMap="BaseResultMap"/>
+    </resultMap>
+
+    <select id="getWithChildren" resultMap="WithChildrenMap">
+        SELECT
+        pc.id,
+        pc.`name`,
+        pc2.id children_id,
+        pc2.`name` children_name
+        FROM pms_product_category pc
+        LEFT JOIN pms_product_category pc2 ON pc.id=pc2.parent_id AND pc2.parent_id <![CDATA[<>]]> 0
+        WHERE pc.parent_id=0
+    </select>
+
 </mapper>

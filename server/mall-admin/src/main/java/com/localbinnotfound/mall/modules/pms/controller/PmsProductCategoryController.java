@@ -6,6 +6,7 @@ import com.localbinnotfound.mall.common.api.CommonPage;
 import com.localbinnotfound.mall.common.api.CommonResult;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductCateChildrenDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -108,6 +109,12 @@ public class PmsProductCategoryController {
         boolean result = productCategoryService.update(productCategoryDTO);
         if (result) return CommonResult.success(true);
         else return CommonResult.failed();
+    }
+
+    @RequestMapping(value="/list/withChildren")
+    public CommonResult getWithChildren() {
+        List<ProductCateChildrenDTO> list = productCategoryService.getWithChilredn();
+        return CommonResult.success(list);
     }
 }
 

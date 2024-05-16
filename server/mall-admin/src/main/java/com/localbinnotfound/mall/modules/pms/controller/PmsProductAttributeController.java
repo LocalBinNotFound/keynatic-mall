@@ -41,7 +41,7 @@ public class PmsProductAttributeController {
     public CommonResult create(@RequestBody PmsProductAttribute productAttribute) {
         boolean result = productAttributeService.create(productAttribute);
         if (result) return CommonResult.success(true);
-        else return CommonResult.failed();
+        return CommonResult.failed();
     }
 
     @RequestMapping(value="update/{id}", method = RequestMethod.POST)

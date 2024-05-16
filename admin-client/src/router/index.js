@@ -116,14 +116,14 @@ export const asyncRouterMap = [
       {
         path: 'addBrand',
         name: 'addBrand',
-        //component: () => import('@/views/pms/brand/add'),
+        component: () => import('@/views/pms/brand/add'),
         meta: {title: 'Add Brand'},
         hidden: true
       },
       {
         path: 'updateBrand',
         name: 'updateBrand',
-        //component: () => import('@/views/pms/brand/update'),
+        component: () => import('@/views/pms/brand/update'),
         meta: {title: 'Update Brand'},
         hidden: true
       }

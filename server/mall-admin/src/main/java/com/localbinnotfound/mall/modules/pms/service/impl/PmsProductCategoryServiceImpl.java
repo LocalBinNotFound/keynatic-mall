@@ -8,6 +8,7 @@ import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsProductCategoryMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategoryAttributeRelation;
 import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
+import com.localbinnotfound.mall.modules.pms.model.dto.ProductCateChildrenDTO;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryAttributeRelationService;
 import com.localbinnotfound.mall.modules.pms.service.PmsProductCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -32,6 +33,9 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
 
     @Autowired
     PmsProductCategoryAttributeRelationService relationService;
+
+    @Autowired
+    PmsProductCategoryMapper productCategoryMapper;
 
     @Override
     public Page list(Long parentId, Integer pageNum, Integer pageSize) {
@@ -99,6 +103,11 @@ public class PmsProductCategoryServiceImpl extends ServiceImpl<PmsProductCategor
 
         isSavedBatch(productCategoryDTO, productCategory);
         return true;
+    }
+
+    @Override
+    public List<ProductCateChildrenDTO> getWithChilredn() {
+        return productCategoryMapper.getWithChildren();
     }
 
     private boolean isSavedBatch(PmsProductCategoryDTO productCategoryDTO, PmsProductCategory productCategory) {

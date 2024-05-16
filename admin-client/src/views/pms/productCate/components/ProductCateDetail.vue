@@ -118,7 +118,6 @@
         getProductAttrInfo(this.$route.query.id).then(response => {
           if (response.data != null && response.data.length > 0) {
             this.filterProductAttrList = [];
-            console.log(response.data);
             for (let i = 0; i < response.data.length; i++) {
               this.filterProductAttrList.push({
                 key: Date.now() + i,

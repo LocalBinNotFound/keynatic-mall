@@ -1,11 +1,16 @@
 package com.localbinnotfound.mall.modules.pms.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.localbinnotfound.mall.modules.pms.mapper.PmsBrandMapper;
 import com.localbinnotfound.mall.modules.pms.model.PmsBrand;
 import com.localbinnotfound.mall.modules.pms.service.PmsBrandService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,8 +24,33 @@ import org.springframework.stereotype.Service;
 public class PmsBrandServiceImpl extends ServiceImpl<PmsBrandMapper, PmsBrand> implements PmsBrandService {
 
     @Override
-    public Page list(Integer pageNum, Integer pageSize) {
+    public Page list(String keyword, Integer pageNum, Integer pageSize) {
         Page page = new Page(pageNum, pageSize);
-        return this.page(page);
+
+        QueryWrapper<PmsBrand> pmsBrandQueryWrapper = new QueryWrapper<>();
+        if (!StringUtils.isEmpty(keyword)) {
+            pmsBrandQueryWrapper.lambda().like(PmsBrand::getName, keyword);
+        }
+        pmsBrandQueryWrapper.lambda().orderByAsc(PmsBrand::getSort);
+
+        return this.page(page, pmsBrandQueryWrapper);
+    }
+
+    @Override
+    public boolean updateShowStatus(List<Long> ids, Integer showStatus) {
+        UpdateWrapper<PmsBrand> brandUpdateWrapper = new UpdateWrapper<>();
+        brandUpdateWrapper.lambda()
+                .set(PmsBrand::getShowStatus, showStatus)
+                .in(PmsBrand::getId, ids);
+        return this.update(brandUpdateWrapper);
+    }
+
+    @Override
+    public boolean updateFactoryStatus(List<Long> ids, Integer factoryStatus) {
+        UpdateWrapper<PmsBrand> brandUpdateWrapper = new UpdateWrapper<>();
+        brandUpdateWrapper.lambda()
+                .set(PmsBrand::getFactoryStatus, factoryStatus)
+                .in(PmsBrand::getId, ids);
+        return this.update(brandUpdateWrapper);
     }
 }
