@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("pms_product_category")
-@ApiModel(value = "PmsProductCategory对象", description = "产品分类")
+@ApiModel(value = "PmsProductCategoryObject", description = "产品分类")
 public class PmsProductCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;

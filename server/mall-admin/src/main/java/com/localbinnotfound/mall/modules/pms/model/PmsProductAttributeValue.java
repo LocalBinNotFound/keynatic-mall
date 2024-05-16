@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @TableName("pms_product_attribute_value")
-@ApiModel(value = "PmsProductAttributeValue对象", description = "存储产品参数信息的表")
+@ApiModel(value = "PmsProductAttributeValueObject", description = "存储产品参数信息的表")
 public class PmsProductAttributeValue implements Serializable {
 
     private static final long serialVersionUID = 1L;

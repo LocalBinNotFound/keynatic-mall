@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("ums_role_menu_relation")
-@ApiModel(value="UmsRoleMenuRelation对象", description="后台角色菜单关系表")
+@ApiModel(value="UmsRoleMenuRelationObject", description="后台角色菜单关系表")
 public class UmsRoleMenuRelation implements Serializable {
 
     private static final long serialVersionUID=1L;

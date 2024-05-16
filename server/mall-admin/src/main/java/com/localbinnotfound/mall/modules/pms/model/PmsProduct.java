@@ -22,7 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @TableName("pms_product")
-@ApiModel(value = "PmsProduct对象", description = "商品信息")
+@ApiModel(value = "PmsProductObject", description = "商品信息")
 public class PmsProduct implements Serializable {
 
     private static final long serialVersionUID = 1L;

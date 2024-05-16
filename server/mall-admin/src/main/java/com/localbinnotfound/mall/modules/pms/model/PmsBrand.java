@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @TableName("pms_brand")
-@ApiModel(value = "PmsBrand对象", description = "品牌表")
+@ApiModel(value = "PmsBrandObject", description = "品牌表")
 public class PmsBrand implements Serializable {
 
     private static final long serialVersionUID = 1L;

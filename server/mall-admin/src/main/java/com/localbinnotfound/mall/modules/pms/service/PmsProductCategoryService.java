@@ -3,6 +3,7 @@ package com.localbinnotfound.mall.modules.pms.service;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.localbinnotfound.mall.modules.pms.model.PmsProductCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.localbinnotfound.mall.modules.pms.model.dto.PmsProductCategoryDTO;
 
 import java.util.List;
 
@@ -26,4 +27,6 @@ public interface PmsProductCategoryService extends IService<PmsProductCategory> 
     boolean updateNavStatus(List<Long> ids, Integer navStatus);
 
     boolean updateShowStatus(List<Long> ids, Integer showStatus);
+
+    boolean customSave(PmsProductCategoryDTO productCategoryDTO);
 }

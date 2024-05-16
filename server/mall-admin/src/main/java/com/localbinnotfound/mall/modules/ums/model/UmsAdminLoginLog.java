@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("ums_admin_login_log")
-@ApiModel(value="UmsAdminLoginLog对象", description="后台用户登录日志表")
+@ApiModel(value="UmsAdminLoginLogObject", description="后台用户登录日志表")
 public class UmsAdminLoginLog implements Serializable {
 
     private static final long serialVersionUID=1L;

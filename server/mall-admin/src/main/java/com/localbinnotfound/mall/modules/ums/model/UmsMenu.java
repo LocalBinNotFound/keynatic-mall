@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("ums_menu")
-@ApiModel(value="UmsMenu对象", description="后台菜单表")
+@ApiModel(value="UmsMenuObject", description="后台菜单表")
 public class UmsMenu implements Serializable {
 
     private static final long serialVersionUID=1L;

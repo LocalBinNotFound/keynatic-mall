@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("ums_resource_category")
-@ApiModel(value="UmsResourceCategory对象", description="资源分类表")
+@ApiModel(value="UmsResourceCategoryObject", description="资源分类表")
 public class UmsResourceCategory implements Serializable {
 
     private static final long serialVersionUID=1L;

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Product attribute category DTO", description="used for product category filter property")
+@ApiModel(value="ProductAttributeCategoryDTO", description="used for product category filter property")
 public class ProductAttributeCateDTO {
     private Long id;
     private String name;
